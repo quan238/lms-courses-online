@@ -5,7 +5,6 @@ export default function SideBar() {
   let temp = "active";
   const [active, setActive] = useState(temp);
 
-  console.log(active);
   return (
     <nav className="vertical_nav">
       <div className="left_section menu_left" id="js-menu">
@@ -155,14 +154,14 @@ export default function SideBar() {
               </ul>
             </li>
             <li className="menu--item">
-              <a
-                href="saved_courses.html"
+              <NavLink
+                to="/savecourses"
                 className="menu--link"
                 title="Saved Courses"
               >
                 <i className="uil uil-heart-alt menu--icon" />
                 <span className="menu--label">Saved Courses</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>

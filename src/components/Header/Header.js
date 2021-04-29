@@ -12,7 +12,7 @@ export default function Header() {
 
   const classDropDown = ["active visible ", "left transition visible "];
 
-  console.log(active);
+  // console.log(active);
   return (
     <header className="header clearfix">
       <button type="button" id="toggleMenu" className="toggle_menu">
@@ -294,9 +294,9 @@ export default function Header() {
               <a href="feedback.html" className="item channel_item">
                 Send Feedback
               </a>
-              <a href="sign_in.html" className="item channel_item">
+              <NavLink to="/login" className="item channel_item">
                 Sign Out
-              </a>
+              </NavLink>
             </div>
           </li>
         </ul>

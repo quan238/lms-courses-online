@@ -3,6 +3,8 @@
 import Explore from "./pages/Explore/Explore";
 import Home from "./pages/Home/Home";
 import LiveStreams from "./pages/LiveStreams/LiveStreams";
+import Login from "./pages/Login/Login";
+import SaveCourses from "./pages/SaveCourses/SaveCourses";
 
 // admin
 // import CoursesAdmin from "./Admin/Pages/CoursesAdmin";
@@ -28,6 +30,16 @@ const routesHome = [
     path: "/explore",
     exact: true,
     component: Explore,
+  },
+  {
+    path: "/login",
+    exact: true,
+    component: Login,
+  },
+  {
+    path: "/savecourses",
+    exact: true,
+    component: SaveCourses,
   },
   //   { path: "/login", exact: true, component: Login },
 ];

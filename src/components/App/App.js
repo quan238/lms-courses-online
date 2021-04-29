@@ -11,6 +11,9 @@ import { routesHome, routesAdmin } from "../../routes";
 
 //template
 import HomeTemplate from "../../template/HomeTemplate";
+import Login from "../../pages/Login/Login";
+
+import ScrollToTop from "./ScrollToTop";
 
 export const history = createBrowserHistory();
 //Đối tượng giúp chuyển hướng trang bất kì file nào
@@ -49,10 +52,9 @@ function App() {
   return (
     <Router history={history}>
       <div className="App">
-        <Switch>
-          {showItemHome(routesHome)}
-          {/* {showItemAdmin(routesAdmin)} */}
-        </Switch>
+        <ScrollToTop>
+          <Switch>{showItemHome(routesHome)}</Switch>
+        </ScrollToTop>
       </div>
     </Router>
   );

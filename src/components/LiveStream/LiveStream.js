@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import Slider from "react-slick";
 
@@ -45,11 +46,11 @@ export default function LiveStream(props) {
   };
 
   return (
-    <div className="section3125">
+    <div className="section3125 live_streams">
       <h4 className="item_title">Live Streams</h4>
-      <a href="live_streams.html" className="see150">
+      <NavLink to="/livestreams" className="see150">
         See all
-      </a>
+      </NavLink>
       <div className="la5lo1">
         <div className="owl-carousel live_stream owl-theme owl-loaded owl-drag">
           <div className="owl-stage-outer">

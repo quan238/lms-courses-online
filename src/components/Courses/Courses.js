@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Slider from "react-slick";
-import {settings} from "../../config/js/config";
+import { settings } from "../../config/js/config";
 
 import "./Courses.scss";
 
@@ -96,7 +96,8 @@ export default function Courses() {
                     {course.tenKhoaHoc}
                   </a>
                   <a href="#" className="crse-cate">
-                    Development | JavaScript
+                    {course.danhMucKhoaHoc.maDanhMucKhoahoc} |{" "}
+                    {course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
                   </a>
                   <div className="auth1lnkprce">
                     <p className="cr1fot">
