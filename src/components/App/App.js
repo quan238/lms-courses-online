@@ -1,8 +1,6 @@
-// import css
-// import "../../config/scss/config.scss"
-// import slick slider
 // Import css files
-// import "slick-carousel/slick/slick.css";
+import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+import "../../../node_modules/slick-carousel/slick/slick.css";
 
 //import route
 import { BrowserRouter, Route, Router, Switch } from "react-router-dom";

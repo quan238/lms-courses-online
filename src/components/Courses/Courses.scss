@@ -1,0 +1,54 @@
+// .slick-prev {
+//   left: -15px;
+// }
+// .slick-slider {
+//   .slick-prev,
+//   .slick-next {
+//     top: 47%;
+//     font-size: 20px !important;
+//     position: absolute;
+//     content: "←";
+//     padding: 4px 0 !important;
+//     text-align: center;
+//     height: 30px !important;
+//     width: 30px !important;
+//     color: #333 !important;
+//     background: #fff !important;
+//     border-radius: 100% !important;
+//     border: 1px solid #e5e5e5 !important;
+//     box-shadow: 0px 2px 2px 0px;
+//     z-index: 9999;
+//   }
+// }
+
+// .owl-prev {
+//   left: -20px;
+//   font-size: 20px !important;
+//   position: fixed;
+//   top: 43%;
+//   text-align: center;
+//   height: 30px !important;
+//   width: 30px !important;
+//   padding: 4px 0 !important;
+//   color: #333 !important;
+//   background: #fff !important;
+//   border-radius: 100% !important;
+//   border: 1px solid #e5e5e5 !important;
+//   box-shadow: 0px 2px 2px 0px;
+//   z-index: 99999 !important;
+//   overflow: visible;
+// }
+.slides {
+  position: relative;
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: 50%;
+  }
+  .slick-prev {
+    left: 5%;
+  }
+  .slick-next {
+    right: 5%;
+  }
+}
