@@ -1,5 +1,5 @@
 // import css
-
+// import "../../config/scss/config.scss"
 // import slick slider
 // Import css files
 // import "slick-carousel/slick/slick.css";

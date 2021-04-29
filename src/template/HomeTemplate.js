@@ -1,6 +1,8 @@
 import React from "react";
 // setup Route
 import { Route } from "react-router";
+import Header from "../components/Header/Header";
+import SideBar from "../components/SideBar/SideBar";
 
 export default function HomeTemplate(props) {
   // declare component, route
@@ -13,8 +15,13 @@ export default function HomeTemplate(props) {
         return (
           <div className="HomeTemplate">
             {/* Header */}
-
-            <Component {...propsRoute} />
+            <Header></Header>
+            <SideBar></SideBar>
+            <div className="wrapper">
+              <div class="sa4d25">
+                <Component {...propsRoute} />
+              </div>
+            </div>
           </div>
         );
       }}
