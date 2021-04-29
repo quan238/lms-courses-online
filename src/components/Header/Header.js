@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import udemy from "../../assets/images/udemy-official.svg";
+import { createAction } from "../../redux/actions";
 
 export default function Header() {
   // set active click
@@ -12,7 +14,10 @@ export default function Header() {
 
   const classDropDown = ["active visible ", "left transition visible "];
 
-  // console.log(active);
+  const taiKhoan = useSelector((state) => state.loginUserReducer.taiKhoan);
+
+  console.log(taiKhoan);
+
   return (
     <header className="header clearfix">
       <button type="button" id="toggleMenu" className="toggle_menu">
@@ -121,12 +126,12 @@ export default function Header() {
               }
             }}
           >
-            <a href="#" className="option_links" title="Messages">
+            <a className="option_links" title="Messages">
               <i className="uil uil-envelope-alt" />
               <span className="noti_count">3</span>
             </a>
             <div className={`menu dropdown_ms ${active[1]}`}>
-              <a href="#" className="channel_my item">
+              <a className="channel_my item">
                 <div className="profile_link">
                   <img src="images/left-imgs/img-6.jpg" alt />
                   <div className="pd_content">
@@ -179,12 +184,12 @@ export default function Header() {
               }
             }}
           >
-            <a href="#" className="option_links" title="Notifications">
+            <a className="option_links" title="Notifications">
               <i className="uil uil-bell" />
               <span className="noti_count">3</span>
             </a>
             <div className={`menu dropdown_mn ${active1[1]}`}>
-              <a href="#" className="channel_my item">
+              <a className="channel_my item">
                 <div className="profile_link">
                   <img src="images/left-imgs/img-1.jpg" alt />
                   <div className="pd_content">
@@ -210,12 +215,11 @@ export default function Header() {
                   </div>
                 </div>
               </a>
-              <a href="#" className="channel_my item">
+              <a className="channel_my item">
                 <div className="profile_link">
                   <img src="images/left-imgs/img-9.jpg" alt />
                   <div className="pd_content">
                     <p>
-                      {" "}
                       Your Membership Approved <strong>Upload Video</strong>.
                     </p>
                     <span className="nm_time">20 min ago</span>
@@ -239,16 +243,34 @@ export default function Header() {
               }
             }}
           >
-            <a href="#" className="opts_account" title="Account">
-              <img src="images/hd_dp.jpg" alt />
-            </a>
+            {taiKhoan !== " " ? (
+              <a className="opts_account" title="Account">
+                <img src="images/hd_dp.jpg" alt />
+              </a>
+            ) : (
+              <a className="opts_account" title="Account">
+                <img src="images/123.png" />
+              </a>
+            )}
+
             <div className={`menu dropdown_account ${active2[1]}`}>
               <div className="channel_my">
                 <div className="profile_link">
-                  <img src="images/hd_dp.jpg" alt />
+                  {taiKhoan !== " " ? (
+                    <img src="images/hd_dp.jpg" alt />
+                  ) : (
+                    <NavLink to="/login">
+                      <img src="images/123.png" />
+                    </NavLink>
+                  )}
                   <div className="pd_content">
                     <div className="rhte85">
-                      <h6>Joginder Singh</h6>
+                      {taiKhoan !== " " ? (
+                        <h6>{taiKhoan.hoTen}</h6>
+                      ) : (
+                        <h6>Need to Login</h6>
+                      )}
+
                       <div className="mef78" title="Verify">
                         <i className="uil uil-check-circle" />
                       </div>
@@ -264,12 +286,23 @@ export default function Header() {
                     </span>
                   </div>
                 </div>
-                <a
-                  href="my_instructor_profile_view.html"
-                  className="dp_link_12"
-                >
-                  View Instructor Profile
-                </a>
+                {taiKhoan.maLoaiNguoiDung === "HV" ? (
+                  <a
+                    href="my_instructor_profile_view.html"
+                    className="dp_link_12"
+                  >
+                    View Student Profile
+                  </a>
+                ) : taiKhoan === " " ? (
+                  <a></a>
+                ) : (
+                  <a
+                    href="my_instructor_profile_view.html"
+                    className="dp_link_12"
+                  >
+                    View Instuctor Profile
+                  </a>
+                )}
               </div>
               <div className="night_mode_switch__btn">
                 <a href="#" id="night-mode" className="btn-night-mode">
@@ -294,9 +327,22 @@ export default function Header() {
               <a href="feedback.html" className="item channel_item">
                 Send Feedback
               </a>
-              <NavLink to="/login" className="item channel_item">
-                Sign Out
-              </NavLink>
+              {taiKhoan !== " " ? (
+                <NavLink
+                  to="/login"
+                  className="item channel_item"
+                  onClick={() => {
+                    localStorage.clear();
+                    window.location.assign("/login");
+                  }}
+                >
+                  Sign Out
+                </NavLink>
+              ) : (
+                <NavLink to="/login" className="item channel_item">
+                  Login
+                </NavLink>
+              )}
             </div>
           </li>
         </ul>

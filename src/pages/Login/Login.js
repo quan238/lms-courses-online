@@ -2,7 +2,45 @@ import React from "react";
 import udemy from "../../assets/images/udemy-official.svg";
 import "./Login.scss";
 
-export default function Login() {
+// formik
+import { withFormik, useFormik } from "formik";
+import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/actions/Users/UserAction";
+
+export default function Login(props) {
+  const dispatch = useDispatch();
+
+  const {
+    handleChange,
+    handleSubmit,
+    errors,
+    handleBlur,
+    touched,
+    isValid,
+  } = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+    },
+
+    validationSchema: yup.object().shape({
+      // taiKhoan: yup.string().required('Tài khoản không được bỏ trống!').min(6,'Tài khoản tối thiểu 6 ký tự!').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,'email không hợp lệ'),
+      taiKhoan: yup
+        .string()
+        .required("Tài khoản không được bỏ trống!")
+        .min(3, "Tài khoản tối thiểu 3 ký tự!"),
+      matKhau: yup.string().required("Mật khẩu không được bỏ trống !"),
+    }),
+
+    onSubmit: (values) => {
+      //values <=> this.state.values (react class component)
+      console.log(values);
+      //Gọi api hoặc action để đưa dữ liệu về server
+      dispatch(loginUser(values));
+    },
+  });
+
   return (
     <div className="sign_in_up_bg" style={{}}>
       <div className="container">
@@ -23,46 +61,59 @@ export default function Login() {
                 <i className="fab fa-google" />
                 Continue with Google
               </button>
-              <form>
-                <div className="ui search focus mt-15">
+              <form onSubmit={handleSubmit}>
+                <div className="ui search focus mt-20">
                   <div className="ui left icon input swdh95">
                     <input
                       className="prompt srch_explore"
-                      type="email"
-                      name="emailaddress"
-                      defaultValue
+                      type="text"
+                      name="taiKhoan"
                       id="id_email"
                       required
                       maxLength={64}
                       placeholder="Email Address"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
+
                     <i className="uil uil-envelope icon icon2" />
                   </div>
+                  {errors.taiKhoan && touched.taiKhoan ? (
+                    <p className="text-danger mt-3">{errors.taiKhoan}</p>
+                  ) : (
+                    ""
+                  )}
                 </div>
-                <div className="ui search focus mt-15">
+                <div className="ui search focus mt-20">
                   <div className="ui left icon input swdh95">
                     <input
                       className="prompt srch_explore"
                       type="password"
-                      name="password"
-                      defaultValue
+                      name="matKhau"
                       id="id_password"
                       required
                       maxLength={64}
                       placeholder="Password"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
                     <i className="uil uil-key-skeleton-alt icon icon2" />
                   </div>
+                  {errors.matKhau && touched.matKhau ? (
+                    <p className="text-danger">{errors.matKhau}</p>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="ui form mt-30 checkbox_sign">
                   <div className="inline field">
                     <div className="ui checkbox mncheck">
-                      <input type="checkbox" tabIndex={0} className="hidden" />
+                      <input type="checkbox" tabIndex={0} className="" />
                       <label>Remember Me</label>
                     </div>
                   </div>
                 </div>
-                <button className="login-btn" type="submit">
+                <button className="login-btn" type="submit" disabled={!isValid}>
                   Sign In
                 </button>
               </form>

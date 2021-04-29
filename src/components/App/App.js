@@ -48,7 +48,10 @@ const showItemHome = (routes) => {
 //   }
 // };
 
-function App() {
+function App(props) {
+  // get data from local to state
+
+
   return (
     <Router history={history}>
       <div className="App">

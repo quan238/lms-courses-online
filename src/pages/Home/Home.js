@@ -23,14 +23,14 @@ export default function Home() {
               <a href="#" class="see150">
                 See all
               </a>
-              <Courses></Courses>
+              <Courses reverse={0}></Courses>
             </div>
             <div className="section3125 mt-30">
               <h4 class="item_title">Newest Courses</h4>
               <a href="#" class="see150">
                 See all
               </a>
-              <Courses> </Courses>
+              <Courses reverse={1}> </Courses>
             </div>
 
             {/* card */}
@@ -45,8 +45,9 @@ export default function Home() {
               <Personalize></Personalize>
             </div>
           </div>
-          <div className="col-xl-12 col-lg-12" />
-          <Feedback></Feedback>
+          <div className="col-xl-12 col-lg-12">
+            <Feedback></Feedback>
+          </div>
         </div>
       </div>
     </Fragment>

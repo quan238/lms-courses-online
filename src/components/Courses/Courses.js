@@ -8,7 +8,7 @@ import "./Courses.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../redux/actions/type";
 
-export default function Courses() {
+export default function Courses(props) {
   // slick slider == button
 
   //creating the ref
@@ -40,6 +40,12 @@ export default function Courses() {
     dispatch(getCourses());
   }, []);
 
+  if (props.reverse === 1) {
+    // neu props ===1 thi reverse mang?
+    Courses.data?.reverse();
+  }
+
+  // render phan tu trong mang?
   const renderCourse = () => {
     return Courses.data?.map((course, index) => {
       return (
@@ -53,7 +59,11 @@ export default function Courses() {
                 <a href="course_detail_view.html" className="fcrse_img">
                   <img src={course.hinhAnh} alt />
                   <div className="course-overlay">
-                    <div className="badge_seller">Bestseller</div>
+                    {props.reverse === 0 ? (
+                      <div className="badge_seller">Bestseller</div>
+                    ) : (
+                      <div></div>
+                    )}
                     <div className="crse_reviews">
                       <i className="uil uil-star" />
                       4.5
