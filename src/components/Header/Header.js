@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import udemy from "../../assets/images/udemy-official.svg";
 
 export default function Header() {
   // set active click
   const [active, setActive] = useState(0);
   const [active1, setActive1] = useState(0);
   const [active2, setActive2] = useState(0);
+
+  const [nightMode, setNightMode] = useState(0);
 
   const classDropDown = ["active visible ", "left transition visible "];
 
@@ -19,9 +23,9 @@ export default function Header() {
         <span className="collapse_menu--label" />
       </button>
       <div className="main_logo" id="logo">
-        <a href="index.html">
-          <img src="images/logo.svg" alt />
-        </a>
+        <NavLink to="/">
+          <img src={udemy} alt style={{ width: "115px" }} />
+        </NavLink>
         <a href="index.html">
           <img className="logo-inverse" src="images/ct_logo.svg" alt />
         </a>

@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function SideBar() {
+  let temp = "active";
+  const [active, setActive] = useState(temp);
+
+  console.log(active);
   return (
     <nav className="vertical_nav">
       <div className="left_section menu_left" id="js-menu">
         <div className="left_section">
           <ul>
             <li className="menu--item">
-              <a href="index.html" className="menu--link active" title="Home">
+              <NavLink to="/home" className={`menu--link`} title="Home">
                 <i className="uil uil-home-alt menu--icon" />
                 <span className="menu--label">Home</span>
-              </a>
+              </NavLink>
             </li>
             <li className="menu--item">
-              <a
-                href="live_streams.html"
+              <NavLink
+                to="/livestreams"
                 className="menu--link"
                 title="Live Streams"
               >
                 <i className="uil uil-kayak menu--icon" />
                 <span className="menu--label">Live Streams</span>
-              </a>
+              </NavLink>
             </li>
             <li className="menu--item">
-              <a href="explore.html" className="menu--link" title="Explore">
+              <NavLink to="/explore" className="menu--link" title="Explore">
                 <i className="uil uil-search menu--icon" />
                 <span className="menu--label">Explore</span>
-              </a>
+              </NavLink>
             </li>
             <li className="menu--item menu--item__has_sub_menu">
               <label className="menu--link" title="Categories">
@@ -158,114 +163,6 @@ export default function SideBar() {
                 <i className="uil uil-heart-alt menu--icon" />
                 <span className="menu--label">Saved Courses</span>
               </a>
-            </li>
-            <li className="menu--item  menu--item__has_sub_menu">
-              <label className="menu--link" title="Pages">
-                <i className="uil uil-file menu--icon" />
-                <span className="menu--label">Pages</span>
-              </label>
-              <ul className="sub_menu">
-                <li className="sub_menu--item">
-                  <a href="about_us.html" className="sub_menu--link">
-                    About
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="sign_in.html" className="sub_menu--link">
-                    Sign In
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="sign_up.html" className="sub_menu--link">
-                    Sign Up
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="sign_up_steps.html" className="sub_menu--link">
-                    Sign Up Steps
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="membership.html" className="sub_menu--link">
-                    Paid Membership
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="course_detail_view.html" className="sub_menu--link">
-                    Course Detail View
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="checkout_membership.html" className="sub_menu--link">
-                    Checkout
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="invoice.html" className="sub_menu--link">
-                    Invoice
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="career.html" className="sub_menu--link">
-                    Career
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="apply_job.html" className="sub_menu--link">
-                    Job Apply
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="our_blog.html" className="sub_menu--link">
-                    Our Blog
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="blog_single_view.html" className="sub_menu--link">
-                    Blog Detail View
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="company_details.html" className="sub_menu--link">
-                    Company Details
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="press.html" className="sub_menu--link">
-                    Press
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="live_output.html" className="sub_menu--link">
-                    Live Stream View
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="add_streaming.html" className="sub_menu--link">
-                    Add live Stream
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="search_result.html" className="sub_menu--link">
-                    Search Result
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="thank_you.html" className="sub_menu--link">
-                    Thank You
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="coming_soon.html" className="sub_menu--link">
-                    Coming Soon
-                  </a>
-                </li>
-                <li className="sub_menu--item">
-                  <a href="error_404.html" className="sub_menu--link">
-                    Error 404
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </div>

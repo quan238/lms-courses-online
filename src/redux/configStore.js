@@ -1,12 +1,12 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import reduxThunk from "redux-thunk";
+import getCourses from "./reducers/getCourses";
 
-// import reducers 
-
+// import reducers
 
 const rootReducer = combineReducers({
   // declare reducers in here
-
+  getCoursesReducer: getCourses,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

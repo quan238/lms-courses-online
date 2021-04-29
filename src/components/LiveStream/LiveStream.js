@@ -1,6 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function LiveStream() {
+import Slider from "react-slick";
+
+import "./LiveStream.scss";
+
+export default function LiveStream(props) {
+  const liveStream = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+  //creating the ref
+  const customeSlider = React.createRef();
+
+  const [sliderSettings, setSliderSettings] = useState(props.setting);
+
+  const gotoNext = () => {
+    customeSlider.current.slickNext();
+  };
+
+  const gotoPrev = () => {
+    customeSlider.current.slickPrev();
+  };
+
+  const renderLiveStream = () => {
+    return liveStream.map((streamer, index) => {
+      return (
+        <div
+          className="owl-item active"
+          style={{ width: "274.533px", marginRight: 10 }}
+        >
+          <div className="item">
+            <div className="stream_1" style={{ width: "90%" }}>
+              <a href="live_output.html" className="stream_bg">
+                <img src={`images/left-imgs/img-${index + 1}.jpg`} alt />
+                <h4>John Doe</h4>
+                <p>
+                  live
+                  <span />
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="section3125">
       <h4 className="item_title">Live Streams</h4>
@@ -15,162 +58,12 @@ export default function LiveStream() {
               style={{
                 transform: "translate3d(0px, 0px, 0px)",
                 transition: "all 0s ease 0s",
-                width: 2561,
+                width: "1200px",
               }}
             >
-              <div
-                className="owl-item active"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-1.jpg" alt />
-                      <h4>John Doe</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item active"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-2.jpg" alt />
-                      <h4>Jassica</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item active"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-9.jpg" alt />
-                      <h4>Edututs+</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item active"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-3.jpg" alt />
-                      <h4>Joginder Singh</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-4.jpg" alt />
-                      <h4>Zoena</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-5.jpg" alt />
-                      <h4>Albert Dua</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-6.jpg" alt />
-                      <h4>Ridhima</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-7.jpg" alt />
-                      <h4>Amritpal</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="owl-item"
-                style={{ width: "274.533px", marginRight: 10 }}
-              >
-                <div className="item">
-                  <div className="stream_1">
-                    <a href="live_output.html" className="stream_bg">
-                      <img src="images/left-imgs/img-8.jpg" alt />
-                      <h4>Jimmy</h4>
-                      <p>
-                        live
-                        <span />
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <Slider {...sliderSettings} ref={customeSlider}>
+                {renderLiveStream()}
+              </Slider>
             </div>
           </div>
           <div className="owl-nav">
@@ -178,10 +71,16 @@ export default function LiveStream() {
               type="button"
               role="presentation"
               className="owl-prev disabled"
+              onClick={() => gotoPrev()}
             >
               <i className="uil uil-angle-left" />
             </button>
-            <button type="button" role="presentation" className="owl-next">
+            <button
+              onClick={() => gotoNext()}
+              type="button"
+              role="presentation"
+              className="owl-next"
+            >
               <i className="uil uil-angle-right" />
             </button>
           </div>

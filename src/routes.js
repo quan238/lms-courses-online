@@ -1,6 +1,8 @@
 // import pages
 
+import Explore from "./pages/Explore/Explore";
 import Home from "./pages/Home/Home";
+import LiveStreams from "./pages/LiveStreams/LiveStreams";
 
 // admin
 // import CoursesAdmin from "./Admin/Pages/CoursesAdmin";
@@ -15,6 +17,17 @@ const routesHome = [
     path: "/",
     exact: true,
     component: Home,
+  },
+  { path: "/livestreams", exact: true, component: LiveStreams },
+  {
+    path: "/home",
+    exact: true,
+    component: Home,
+  },
+  {
+    path: "/explore",
+    exact: true,
+    component: Explore,
   },
   //   { path: "/login", exact: true, component: Login },
 ];

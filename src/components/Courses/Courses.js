@@ -1,11 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Slider from "react-slick";
-import settings from "../../config/js/config";
+import {settings} from "../../config/js/config";
 
 import "./Courses.scss";
 
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { getCourses } from "../../redux/actions/type";
+
 export default function Courses() {
-  const courses = { data: [1, 2, 3, 5, 6, 7] };
+  // slick slider == button
 
   //creating the ref
   const customeSlider = React.createRef();
@@ -19,16 +23,35 @@ export default function Courses() {
   const gotoPrev = () => {
     customeSlider.current.slickPrev();
   };
+  // ========================================================
+
+  // fetch API courses from getCourses Reducer
+
+  // get reducer
+  const Courses = useSelector((state) => {
+    // console.log(state.getCoursesReducer.result);
+    return state.getCoursesReducer.result;
+  });
+
+  const dispatch = useDispatch();
+
+  // goi api
+  useEffect(() => {
+    dispatch(getCourses());
+  }, []);
 
   const renderCourse = () => {
-    return courses.data?.map((course, index) => {
+    return Courses.data?.map((course, index) => {
       return (
         <Fragment key={index}>
-          <div className="owl-item" style={{ width: 538, marginRight: 20 }}>
+          <div
+            className="owl-item"
+            style={{ width: "385.56px", marginRight: 20 }}
+          >
             <div className="item">
               <div className="fcrse_1 mb-20">
                 <a href="course_detail_view.html" className="fcrse_img">
-                  <img src="images/courses/img-2.jpg" alt />
+                  <img src={course.hinhAnh} alt />
                   <div className="course-overlay">
                     <div className="badge_seller">Bestseller</div>
                     <div className="crse_reviews">
@@ -66,18 +89,23 @@ export default function Courses() {
                     </div>
                   </div>
                   <div className="vdtodt">
-                    <span className="vdt14">5M views</span>
+                    <span className="vdt14">{course.luotXem} views</span>
                     <span className="vdt14">15 days ago</span>
                   </div>
                   <a href="course_detail_view.html" className="crse14s">
-                    The Complete JavaScript Course 2020: Build Real Projects!
+                    {course.tenKhoaHoc}
                   </a>
                   <a href="#" className="crse-cate">
                     Development | JavaScript
                   </a>
                   <div className="auth1lnkprce">
                     <p className="cr1fot">
-                      By <a href="#">Jassica William</a>
+                      By{" "}
+                      <a href="#">
+                        {course.nguoiTao.hoTen
+                          ? course.nguoiTao.hoTen
+                          : "admin"}
+                      </a>
                     </p>
                     <div className="prce142">$5</div>
                     <button className="shrt-cart-btn" title="cart">
@@ -101,7 +129,7 @@ export default function Courses() {
             style={{
               transform: "translate3d(0px, 0px, 0px)",
               transition: "all 0s ease 0s",
-              width: "2264px",
+              width: "1619px",
             }}
           >
             <Slider {...sliderSettings} ref={customeSlider}>
