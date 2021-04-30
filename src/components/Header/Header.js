@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import udemy from "../../assets/images/udemy-official.svg";
 import { createAction } from "../../redux/actions";
+
+// alert
+
+import Swal from "../../../node_modules/sweetalert2/dist/sweetalert2.js";
+import "../../../node_modules/sweetalert2/src/sweetalert2.scss";
 
 export default function Header() {
   // set active click
@@ -100,13 +105,25 @@ export default function Header() {
       <div className="header_right">
         <ul>
           <li>
-            <a
-              href="create_new_course.html"
-              className="upload_btn"
-              title="Create New Course"
-            >
-              Create New Course
-            </a>
+            {taiKhoan.maLoaiNguoiDung === "HV" ? (
+              <a
+                className="upload_btn bg-dark text-white "
+                title="Create New Course"
+                onClick={() => {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "You need to be a teacher!",
+                  });
+                }}
+              >
+                Create New Course
+              </a>
+            ) : (
+              <NavLink to="" className="upload_btn " title="Create New Course">
+                Create New Course
+              </NavLink>
+            )}
           </li>
           <li>
             <a href="shopping_cart.html" className="option_links" title="cart">
@@ -266,14 +283,17 @@ export default function Header() {
                   <div className="pd_content">
                     <div className="rhte85">
                       {taiKhoan !== " " ? (
-                        <h6>{taiKhoan.hoTen}</h6>
+                        <Fragment>
+                          <h6>{taiKhoan.hoTen}</h6>
+                          <div className="mef78" title="Verify">
+                            <i className="uil uil-check-circle" />
+                          </div>
+                        </Fragment>
                       ) : (
-                        <h6>Need to Login</h6>
+                        <NavLink to="/login">
+                          <h6 className="need_to_login text-primary">Need to Login</h6>
+                        </NavLink>
                       )}
-
-                      <div className="mef78" title="Verify">
-                        <i className="uil uil-check-circle" />
-                      </div>
                     </div>
                     <span>
                       <a

@@ -1,5 +1,5 @@
 import { taiKhoan } from "../../../config/js/settingConfig";
-import { FETCH_CREDENTIALS } from "../../constants/type";
+import { FETCH_CREDENTIALS, REGISTER_USER } from "../../constants/type";
 
 let taiKhoanNguoiDung = " ";
 
@@ -16,12 +16,11 @@ const stateDefault = {
 const ConfirmUser = (state = stateDefault, action) => {
   switch (action.type) {
     case FETCH_CREDENTIALS:
-      console.log(state);
-
       state.taiKhoan = action.payload;
+
       return { ...state };
-    case "DELETE_ITEM":
-      state.taiKhoan = "";
+    case REGISTER_USER:
+      state.taiKhoan = action.payload;
       return { ...state };
     default:
       return { ...state };

@@ -2,12 +2,14 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+import "./Info_rs.scss";
+
 export default function Info_rs() {
   // taiKhaon
   const taiKhoan = useSelector((state) => state.loginUserReducer.taiKhoan);
 
   return (
-    <div className="fcrse_2 mb-30">
+    <div className="fcrse_2 mb-30 info_rs">
       <div className="tutor_img">
         {taiKhoan !== " " ? (
           <a href="my_instructor_profile_view.html">
@@ -31,17 +33,16 @@ export default function Info_rs() {
               </div>
             </Fragment>
           ) : (
-            <NavLink to="/login" className="tutor_name">
+            <NavLink to="/login" className="tutor_name text-primary tutor_name_active">
               Login
             </NavLink>
           )}
         </div>
         <div className="tutor_cate">
-          Web Developer, Designer, and{" "}
           {taiKhoan.maLoaiNguoiDung === "HV" ? (
-            <span>Student</span>
+            <span> Web Developer, Designer, and Student</span>
           ) : taiKhoan === " " ? (
-            <span>User</span>
+            <span></span>
           ) : (
             <span>Teacher</span>
           )}
@@ -68,13 +69,19 @@ export default function Info_rs() {
             </a>
           </li>
         </ul>
-        <div className="tut1250">
-          <span className="vdt15">615K Students</span>
-          <span className="vdt15">12 Courses</span>
-        </div>
-        <a href="my_instructor_profile_view.html" className="prfle12link">
-          Go To Profile
-        </a>
+        {taiKhoan !== " " ? (
+          <Fragment>
+            <div className="tut1250">
+              <span className="vdt15">615K Students</span>
+              <span className="vdt15">12 Courses</span>
+            </div>
+            <a href="my_instructor_profile_view.html" className="prfle12link">
+              Go To Profile
+            </a>
+          </Fragment>
+        ) : (
+          <a></a>
+        )}
       </div>
     </div>
   );

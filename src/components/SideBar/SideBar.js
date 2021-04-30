@@ -215,11 +215,7 @@ export default function SideBar() {
               <a href="terms_of_use.html">Terms</a>
             </li>
           </ul>
-          <div className="left_footer_content">
-            <p>
-              © 2020 <strong>Cursus</strong>. All Rights Reserved.
-            </p>
-          </div>
+         
         </div>
       </div>
     </nav>

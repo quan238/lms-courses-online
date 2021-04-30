@@ -7,6 +7,7 @@ import { withFormik, useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/actions/Users/UserAction";
+import { NavLink } from "react-router-dom";
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -121,7 +122,7 @@ export default function Login(props) {
                 Or <a href="forgot_password.html">Forgot Password</a>.
               </p>
               <p className="mb-0 mt-30 hvsng145">
-                Don't have an account? <a href="sign_up.html">Sign Up</a>
+                Don't have an account? <NavLink to="/signup">Sign Up</NavLink>
               </p>
             </div>
           </div>

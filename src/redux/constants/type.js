@@ -4,3 +4,4 @@ export const GET_COURSES_TITLE = "GET_COURSES_TITLE";
 // user
 export const GET_USER = "GET_USER";
 export const FETCH_CREDENTIALS = "FETCH_CREDENTIALS";
+export const REGISTER_USER = "REGISTER_USER";

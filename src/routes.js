@@ -4,6 +4,7 @@ import Explore from "./pages/Explore/Explore";
 import Home from "./pages/Home/Home";
 import LiveStreams from "./pages/LiveStreams/LiveStreams";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import SaveCourses from "./pages/SaveCourses/SaveCourses";
 
 // admin
@@ -40,6 +41,11 @@ const routesHome = [
     path: "/savecourses",
     exact: true,
     component: SaveCourses,
+  },
+  {
+    path: "/signup",
+    exact: true,
+    component: Register,
   },
   //   { path: "/login", exact: true, component: Login },
 ];

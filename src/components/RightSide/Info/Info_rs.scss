@@ -1,0 +1,13 @@
+.tutor_img {
+  img:hover {
+    opacity: 0.6;
+    transition: 0.2s linear;
+  }
+}
+.tutor_name_active {
+  font-size: 20px;
+  &:hover {
+    color: darkgrey;
+  }
+}
+
