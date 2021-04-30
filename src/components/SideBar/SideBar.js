@@ -18,7 +18,7 @@ export default function SideBar() {
             </li>
             <li className="menu--item">
               <NavLink
-                to="/livestreams"
+                to="/liveoutput"
                 className="menu--link"
                 title="Live Streams"
               >
@@ -121,20 +121,14 @@ export default function SideBar() {
           <h6 className="left_title">SUBSCRIPTIONS</h6>
           <ul>
             <li className="menu--item">
-              <a
-                href="instructor_profile_view.html"
-                className="menu--link user_img"
-              >
+              <a href="" className="menu--link user_img">
                 <img src="images/left-imgs/img-1.jpg" alt />
                 Rock Smith
                 <div className="alrt_dot" />
               </a>
             </li>
             <li className="menu--item">
-              <a
-                href="instructor_profile_view.html"
-                className="menu--link user_img"
-              >
+              <a href="" className="menu--link user_img">
                 <img src="images/left-imgs/img-2.jpg" alt />
                 Jassica William
               </a>
@@ -215,7 +209,6 @@ export default function SideBar() {
               <a href="terms_of_use.html">Terms</a>
             </li>
           </ul>
-         
         </div>
       </div>
     </nav>

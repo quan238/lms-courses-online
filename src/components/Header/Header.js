@@ -106,7 +106,7 @@ export default function Header() {
         <ul>
           <li>
             {taiKhoan.maLoaiNguoiDung === "HV" ? (
-              <a
+              <NavLink
                 className="upload_btn bg-dark text-white "
                 title="Create New Course"
                 onClick={() => {
@@ -118,9 +118,13 @@ export default function Header() {
                 }}
               >
                 Create New Course
-              </a>
+              </NavLink>
             ) : (
-              <NavLink to="" className="upload_btn " title="Create New Course">
+              <NavLink
+                to="/create-new-courses"
+                className="upload_btn "
+                title="Create New Course"
+              >
                 Create New Course
               </NavLink>
             )}
@@ -248,123 +252,112 @@ export default function Header() {
               </a>
             </div>
           </li>
-          <li
-            className={`ui dropdown ${active2[0]}`}
-            onClick={() => {
-              if (active2 == 0) {
-                setActive2(classDropDown);
-                setActive([]);
-                setActive1([]);
-              } else {
-                setActive2([]);
-              }
-            }}
-          >
-            {taiKhoan !== " " ? (
-              <a className="opts_account" title="Account">
-                <img src="images/hd_dp.jpg" alt />
-              </a>
-            ) : (
-              <a className="opts_account" title="Account">
-                <img src="images/123.png" />
-              </a>
-            )}
-
-            <div className={`menu dropdown_account ${active2[1]}`}>
-              <div className="channel_my">
-                <div className="profile_link">
-                  {taiKhoan !== " " ? (
+          {taiKhoan !== " " ? (
+            <Fragment>
+              <li
+                className={`ui dropdown ${active2[0]}`}
+                onClick={() => {
+                  if (active2 == 0) {
+                    setActive2(classDropDown);
+                    setActive([]);
+                    setActive1([]);
+                  } else {
+                    setActive2([]);
+                  }
+                }}
+              >
+                {taiKhoan !== " " ? (
+                  <a className="opts_account" title="Account">
                     <img src="images/hd_dp.jpg" alt />
-                  ) : (
-                    <NavLink to="/login">
-                      <img src="images/123.png" />
-                    </NavLink>
-                  )}
-                  <div className="pd_content">
-                    <div className="rhte85">
-                      {taiKhoan !== " " ? (
-                        <Fragment>
-                          <h6>{taiKhoan.hoTen}</h6>
-                          <div className="mef78" title="Verify">
-                            <i className="uil uil-check-circle" />
-                          </div>
-                        </Fragment>
-                      ) : (
-                        <NavLink to="/login">
-                          <h6 className="need_to_login text-primary">Need to Login</h6>
-                        </NavLink>
-                      )}
-                    </div>
-                    <span>
-                      <a
-                        href="/cdn-cgi/l/email-protection"
-                        className="__cf_email__"
-                        data-cfemail="99fef8f4fbf6f5a0adaad9fef4f8f0f5b7faf6f4"
-                      >
-                        [email&nbsp;protected]
-                      </a>
-                    </span>
-                  </div>
-                </div>
-                {taiKhoan.maLoaiNguoiDung === "HV" ? (
-                  <a
-                    href="my_instructor_profile_view.html"
-                    className="dp_link_12"
-                  >
-                    View Student Profile
                   </a>
-                ) : taiKhoan === " " ? (
-                  <a></a>
                 ) : (
-                  <a
-                    href="my_instructor_profile_view.html"
-                    className="dp_link_12"
-                  >
-                    View Instuctor Profile
+                  <a className="opts_account" title="Account">
+                    <img src="images/123.png" />
                   </a>
                 )}
-              </div>
-              <div className="night_mode_switch__btn">
-                <a href="#" id="night-mode" className="btn-night-mode">
-                  <i className="uil uil-moon" /> Night mode
-                  <span className="btn-night-mode-switch">
-                    <span className="uk-switch-button" />
-                  </span>
-                </a>
-              </div>
-              <a href="instructor_dashboard.html" className="item channel_item">
-                Cursus dashboard
-              </a>
-              <a href="membership.html" className="item channel_item">
-                Paid Memberships
-              </a>
-              <a href="setting.html" className="item channel_item">
-                Setting
-              </a>
-              <a href="help.html" className="item channel_item">
-                Help
-              </a>
-              <a href="feedback.html" className="item channel_item">
-                Send Feedback
-              </a>
-              {taiKhoan !== " " ? (
-                <NavLink
-                  to="/login"
-                  className="item channel_item"
-                  onClick={() => {
-                    localStorage.clear();
-                    window.location.assign("/login");
-                  }}
-                >
-                  Sign Out
-                </NavLink>
-              ) : (
-                <NavLink to="/login" className="item channel_item">
-                  Login
-                </NavLink>
-              )}
-            </div>
-          </li>
+
+                <div className={`menu dropdown_account ${active2[1]}`}>
+                  <div className="channel_my">
+                    <div className="profile_link">
+                      <img src="images/hd_dp.jpg" alt />
+                      <div className="pd_content">
+                        <div className="rhte85">
+                          <Fragment>
+                            <h6>{taiKhoan.hoTen}</h6>
+                            <div className="mef78" title="Verify">
+                              <i className="uil uil-check-circle" />
+                            </div>
+                          </Fragment>
+                        </div>
+                        <span>
+                          <a
+                            href="/cdn-cgi/l/email-protection"
+                            className="__cf_email__"
+                            data-cfemail="99fef8f4fbf6f5a0adaad9fef4f8f0f5b7faf6f4"
+                          >
+                            [email&nbsp;protected]
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                    {taiKhoan.maLoaiNguoiDung === "HV" ? (
+                      <a
+                        href="my_instructor_profile_view.html"
+                        className="dp_link_12"
+                      >
+                        View Student Profile
+                      </a>
+                    ) : (
+                      <a
+                        href="my_instructor_profile_view.html"
+                        className="dp_link_12"
+                      >
+                        View Instuctor Profile
+                      </a>
+                    )}
+                  </div>
+                  <div className="night_mode_switch__btn">
+                    <a href="#" id="night-mode" className="btn-night-mode">
+                      <i className="uil uil-moon" /> Night mode
+                      <span className="btn-night-mode-switch">
+                        <span className="uk-switch-button" />
+                      </span>
+                    </a>
+                  </div>
+                  <a
+                    href="instructor_dashboard.html"
+                    className="item channel_item"
+                  >
+                    Cursus dashboard
+                  </a>
+                  <a href="membership.html" className="item channel_item">
+                    Paid Memberships
+                  </a>
+                  <a href="setting.html" className="item channel_item">
+                    Setting
+                  </a>
+                  <a href="help.html" className="item channel_item">
+                    Help
+                  </a>
+                  <a href="feedback.html" className="item channel_item">
+                    Send Feedback
+                  </a>
+                  <NavLink
+                    to="/login"
+                    className="item channel_item"
+                    onClick={() => {
+                      localStorage.clear();
+                      window.location.assign("/login");
+                    }}
+                  >
+                    Sign Out
+                  </NavLink>
+                </div>
+              </li>
+            </Fragment>
+          ) : (
+            <span></span>
+          )}
         </ul>
       </div>
     </header>

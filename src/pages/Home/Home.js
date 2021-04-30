@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import Courses from "../../components/Courses/Courses";
 import Feedback from "../../components/Feedback/Feedback";
@@ -20,16 +21,14 @@ export default function Home() {
             {/* feature1 */}
             <div className="section3125 mt-50">
               <h4 class="item_title">Featured Courses</h4>
-              <a href="#" class="see150">
+              <NavLink to="/explore" class="see150">
                 See all
-              </a>
+              </NavLink>
               <Courses reverse={0}></Courses>
             </div>
             <div className="section3125 mt-30">
               <h4 class="item_title">Newest Courses</h4>
-              <a href="#" class="see150">
-                See all
-              </a>
+
               <Courses reverse={1}> </Courses>
             </div>
 

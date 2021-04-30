@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import LiveStream from "../../components/LiveStream/LiveStream";
 
-import { settings3} from "../../config/js/config";
+import { settings3 } from "../../config/js/config";
+
+import "./Explore.scss";
 
 export default function Explore() {
   return (
@@ -25,17 +27,14 @@ export default function Explore() {
             </div>
           </div>
           <div className="col-md-12 ">
-              <div className="mb-15 mt-50">
-            <LiveStream
-              setting={settings3}
-              
-            ></LiveStream>
+            <div className="mb-15 mt-50">
+              <LiveStream setting={settings3}></LiveStream>
             </div>
           </div>
           <div className="col-md-12">
             <div className="_14d25">
-              <div className="row">
-                <div className="col-lg-3 col-md-4">
+              <div className="row explore">
+                <div className="col-lg-3 col-md-4 ">
                   <div className="fcrse_1 mt-30">
                     <a href="course_detail_view.html" className="fcrse_img">
                       <img src="images/courses/img-1.jpg" alt />

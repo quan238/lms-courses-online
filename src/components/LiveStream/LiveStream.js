@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import Slider from "react-slick";
+import { getUsers } from "../../redux/actions/Users/UserFetch";
 
 import "./LiveStream.scss";
 
@@ -21,8 +23,23 @@ export default function LiveStream(props) {
     customeSlider.current.slickPrev();
   };
 
+  //  fetch Api
+  const users = useSelector((state) => {
+    // console.log(state.getCoursesReducer.result);
+    return state.getUserReducer.result.data;
+  });
+
+  const dispatch = useDispatch();
+
+  // goi api
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+
+  console.log(users);
+
   const renderLiveStream = () => {
-    return liveStream.map((streamer, index) => {
+    return users?.slice(1, 17).map((streamer, index) => {
       return (
         <div
           className="owl-item active"
@@ -30,14 +47,14 @@ export default function LiveStream(props) {
         >
           <div className="item">
             <div className="stream_1" style={{ width: "90%" }}>
-              <a href="live_output.html" className="stream_bg">
+              <NavLink to="liveoutput" className="stream_bg">
                 <img src={`images/left-imgs/img-${index + 1}.jpg`} alt />
-                <h4>John Doe</h4>
+                <h4>{streamer.hoTen}</h4>
                 <p>
                   live
                   <span />
                 </p>
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

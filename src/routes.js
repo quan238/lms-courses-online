@@ -7,14 +7,9 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import SaveCourses from "./pages/SaveCourses/SaveCourses";
 
-// admin
-// import CoursesAdmin from "./Admin/Pages/CoursesAdmin";
-// import Settings from "./Admin/Pages/Settings";
-// import HomePage from "./Admin/Pages/HomePage";
-// home
-
-// import Login from "./Pages/Login/Login";
-
+// instructor
+import CreateNewCourses from "./pages/Instructor/CreateNewCourses/CreateNewCourses";
+import Live_output from "./pages/LiveStreams/Live_Output/Live_output";
 const routesHome = [
   {
     path: "/",
@@ -47,17 +42,20 @@ const routesHome = [
     exact: true,
     component: Register,
   },
+  {
+    path: "/liveoutput",
+    exact: true,
+    component: Live_output,
+  },
   //   { path: "/login", exact: true, component: Login },
 ];
 
-// const routesAdmin = [
-//   {
-//     path: "/admin",
-//     exact: true,
-//     component: HomePage,
-//   },
-//   { path: "/settings", exact: true, component: Settings },
-//   { path: "/coursesAdmin", exact: true, component: CoursesAdmin },
-// ];
+const routesInstructor = [
+  {
+    path: "/create-new-courses",
+    exact: true,
+    component: CreateNewCourses,
+  },
+];
 
-export { routesHome };
+export { routesHome, routesInstructor };

@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import LiveStreaming from "../../components/RightSide/LiveStreaming/LiveStreaming";
 
 export default function LiveStreams() {
@@ -13,194 +14,194 @@ export default function LiveStreams() {
                 <div className="row">
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-1.jpg" alt />
                         <h4>John Doe</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-2.jpg" alt />
                         <h4>Jassica</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-9.jpg" alt />
                         <h4>Edututs+</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-3.jpg" alt />
                         <h4>Joginder Singh</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-4.jpg" alt />
                         <h4>Zoena</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-5.jpg" alt />
                         <h4>Albert Dua</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-6.jpg" alt />
                         <h4>Ridhima</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-7.jpg" alt />
                         <h4>Amritpal</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-8.jpg" alt />
                         <h4>Jimmy</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-11.jpg" alt />
                         <h4>Quinton Batchelor</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-12.jpg" alt />
                         <h4>Eli Natoli</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-13.jpg" alt />
                         <h4>Jaysen Batchelor</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-14.jpg" alt />
                         <h4>Farhat Amin</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-15.jpg" alt />
                         <h4>Kyle Pew</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-16.jpg" alt />
                         <h4>Kerstin Cable</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className="stream_1 mb-30">
-                      <a href="live_output.html" className="stream_bg">
+                      <NavLink className="stream_bg" to="/liveoutput">
                         <img src="images/left-imgs/img-17.jpg" alt />
                         <h4>Jose Portilla</h4>
                         <p>
                           live
                           <span />
                         </p>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
                   <div className="col-md-12">

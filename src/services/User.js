@@ -16,4 +16,12 @@ export default class UserService {
       data: user,
     });
   }
+  async fetchUser() {
+    return await Axios({
+      url:
+        "https://elearning0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01",
+      method: "GET",
+      mimeType: "json",
+    });
+  }
 }
