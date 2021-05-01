@@ -3,7 +3,7 @@ import udemy from "../../assets/images/udemy-official.svg";
 import "./Login.scss";
 
 // formik
-import { withFormik, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/actions/Users/UserAction";
@@ -43,7 +43,7 @@ export default function Login(props) {
   });
 
   return (
-    <div className="sign_in_up_bg" style={{}}>
+    <div className="sign_in_up_bg mb-40 mt-30" style={{}}>
       <div className="container">
         <div className="row justify-content-lg-center justify-content-md-center">
           <div className="col-lg-6 col-md-8">

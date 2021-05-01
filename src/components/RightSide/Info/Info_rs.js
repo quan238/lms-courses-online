@@ -33,18 +33,21 @@ export default function Info_rs() {
               </div>
             </Fragment>
           ) : (
-            <NavLink to="/login" className="tutor_name text-primary tutor_name_active">
+            <NavLink
+              to="/login"
+              className="tutor_name tutor_name_active"
+            >
               Login
             </NavLink>
           )}
         </div>
         <div className="tutor_cate">
           {taiKhoan.maLoaiNguoiDung === "HV" ? (
-            <span> Web Developer, Designer, and Student</span>
+            <span>Web Developer, Designer, and Student</span>
           ) : taiKhoan === " " ? (
             <span></span>
           ) : (
-            <span>Teacher</span>
+            <span>Web Developer, Designer, and Teacher</span>
           )}
         </div>
         <ul className="tutor_social_links">

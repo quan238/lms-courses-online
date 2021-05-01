@@ -27,7 +27,6 @@ export default function General() {
                       data-purpose="edit-course-title"
                       maxLength={60}
                       id="main[title]"
-                      defaultValue
                     />
                     <div className="badge_num">60</div>
                   </div>
@@ -45,7 +44,6 @@ export default function General() {
                       data-purpose="edit-course-title"
                       maxLength={60}
                       id="sub[title]"
-                      defaultValue
                     />
                     <div className="badge_num2">120</div>
                   </div>
@@ -101,7 +99,6 @@ export default function General() {
                             name="description"
                             id="id_course_description"
                             placeholder="Insert your course description"
-                            defaultValue={""}
                           />
                         </div>
                       </div>

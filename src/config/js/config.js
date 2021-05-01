@@ -1,6 +1,6 @@
 //   setting slick slider
 export var settings = {
-  dots: true,
+  
   infinite: true,
   speed: 500,
   slidesToShow: 4,

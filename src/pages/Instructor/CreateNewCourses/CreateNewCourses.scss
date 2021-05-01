@@ -1,0 +1,13 @@
+#add-course-tab .step-steps > li:before {
+  top: 25px;
+}
+.nav-item {
+  .nav-link.active {
+    background-color: transparent;
+    border: none;
+  }
+}
+#add-course-tab .step-steps {
+  height: 150px;
+  justify-content: flex-start;
+}

@@ -1,4 +1,4 @@
-import { taiKhoan } from "../../../config/js/settingConfig";
+import { accessToken, taiKhoan } from "../../../config/js/settingConfig";
 import { FETCH_CREDENTIALS, REGISTER_USER } from "../../constants/type";
 
 let taiKhoanNguoiDung = " ";
@@ -17,10 +17,11 @@ const ConfirmUser = (state = stateDefault, action) => {
   switch (action.type) {
     case FETCH_CREDENTIALS:
       state.taiKhoan = action.payload;
+      console.log(state.taiKhoan);
 
       return { ...state };
     case REGISTER_USER:
-      state.taiKhoan = action.payload;
+      state.taiKhoan = " ";
       return { ...state };
     default:
       return { ...state };

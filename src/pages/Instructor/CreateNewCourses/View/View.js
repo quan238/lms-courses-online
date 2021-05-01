@@ -6,7 +6,7 @@ export default function View() {
       <div className="tab-from-content">
         <div className="title-icon">
           <h3 className="title">
-            <i className="uil uil-image-upload" />
+            <i class="fa fa-file-image"></i>
             View
           </h3>
         </div>

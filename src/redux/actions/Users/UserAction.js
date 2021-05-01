@@ -1,4 +1,3 @@
-import { createAction } from "..";
 import { history } from "../../../components/App/App";
 import { accessToken, taiKhoan } from "../../../config/js/settingConfig";
 import { userService } from "../../../services/Courses";
@@ -6,6 +5,7 @@ import { FETCH_CREDENTIALS, REGISTER_USER } from "../../constants/type";
 // alert
 import Swal from "../../../../node_modules/sweetalert2/dist/sweetalert2.js";
 import "../../../../node_modules/sweetalert2/src/sweetalert2.scss";
+import { createAction } from "..";
 
 const Toast = Swal.mixin({
   toast: true,
@@ -27,6 +27,7 @@ export const loginUser = (user) => {
       .loginUser(user)
       .then((result) => {
         //Lấy giá trị api gửi về lưu vào localstorage
+        console.log(result);
         dispatch(createAction(FETCH_CREDENTIALS, result.data));
 
         localStorage.setItem(accessToken, result.data.accessToken);
@@ -62,8 +63,13 @@ export const registerUser = (user) => {
 
         dispatch(createAction(REGISTER_USER, result.data));
 
-        localStorage.setItem(accessToken, result.data.accessToken);
-        localStorage.setItem(taiKhoan, JSON.stringify(result.data));
+        let taiKhoan = result.data.taiKhoan;
+        let matKhau = result.data.matKhau;
+        let userLogin = { taiKhoan, matKhau };
+
+        console.log(userLogin);
+
+        localStorage.clear();
 
         //Đăng nhập thành công chuyển hướng về home
         Toast.fire({
@@ -71,7 +77,7 @@ export const registerUser = (user) => {
           title: "Signed up successfully",
         });
 
-        history.push("/");
+        history.push("/login");
       })
       .catch((err) => {
         Swal.fire({

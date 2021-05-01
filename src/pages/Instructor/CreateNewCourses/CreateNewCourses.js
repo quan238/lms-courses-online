@@ -1,5 +1,8 @@
 import React from "react";
 import General from "./General/General";
+import View from "./View/View";
+import Content from "./Content/Content";
+import Information from "./Information/Information";
 
 import "./CreateNewCourses.scss";
 
@@ -17,48 +20,103 @@ export default function CreateNewCourses() {
         <div className="col-12">
           <div className="course_tabs_1">
             <div id="add-course-tab" className="step-app">
-              <ul className="step-steps">
-                <li className="active">
-                  <a href="#tab_step1">
+              <ul class="nav nav-tabs step-steps" id="myTab" role="tablist">
+                <li class="nav-item active ">
+                  <a
+                    class="nav-link active "
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="#general"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
                     <span className="number" />
                     <span className="step-name">General Information</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#tab_step2">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#view"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
                     <span className="number" />
                     <span className="step-name">View</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#tab_step3">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="contact-tab"
+                    data-toggle="tab"
+                    href="#content"
+                    role="tab"
+                    aria-controls="contact"
+                    aria-selected="false"
+                  >
                     <span className="number" />
-                    <span className="step-name">Course Content</span>
+                    <span className="step-name">COURSE CONTENT</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#tab_step4">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="contact-tab"
+                    data-toggle="tab"
+                    href="#information"
+                    role="tab"
+                    aria-controls="contact"
+                    aria-selected="false"
+                  >
                     <span className="number" />
-                    <span className="step-name">Extra Information</span>
+                    <span className="step-name">EXTRA Information</span>
                   </a>
                 </li>
               </ul>
-              <div className="step-content">
-                <General></General>
+
+              <div className="step-content tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="general"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <General></General>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="view"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <View></View>
+                </div>
+                {/* <div
+                  class="tab-pane fade"
+                  id="content"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                >
+                  <Content></Content>
+                </div>*/}
+                <div
+                  class="tab-pane fade"
+                  id="information"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                >
+                  <Information></Information>
+                </div>
               </div>
-              <div className="step-footer step-tab-pager">
-                <button
-                  data-direction="prev"
-                  className="btn btn-default steps_btn"
-                >
-                  PREVIOUS
-                </button>
-                <button
-                  data-direction="next"
-                  className="btn btn-default steps_btn"
-                >
-                  Next
-                </button>
+              <div
+                className="step-footer step-tab-pager"
+                style={{ justifyContent: "flex-end" }}
+              >
                 <button
                   data-direction="finish"
                   className="btn btn-default steps_btn"

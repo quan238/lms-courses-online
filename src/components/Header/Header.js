@@ -9,6 +9,9 @@ import { createAction } from "../../redux/actions";
 import Swal from "../../../node_modules/sweetalert2/dist/sweetalert2.js";
 import "../../../node_modules/sweetalert2/src/sweetalert2.scss";
 
+// css
+import "./Header.scss";
+
 export default function Header() {
   // set active click
   const [active, setActive] = useState(0);
@@ -106,7 +109,7 @@ export default function Header() {
         <ul>
           <li>
             {taiKhoan.maLoaiNguoiDung === "HV" ? (
-              <NavLink
+              <a
                 className="upload_btn bg-dark text-white "
                 title="Create New Course"
                 onClick={() => {
@@ -118,7 +121,7 @@ export default function Header() {
                 }}
               >
                 Create New Course
-              </NavLink>
+              </a>
             ) : (
               <NavLink
                 to="/create-new-courses"
