@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { createAction } from ".";
 import { courseServices } from "../../services/Courses";
-import { GET_COURSES, POST_COURSE } from "../constants/type";
+import { GET_COURSES, GET_DETAIL_COURSE, POST_COURSE } from "../constants/type";
 
 export const getCourses = () => {
   return (dispatch) => {
@@ -16,7 +16,6 @@ export const postCourses = (course, file) => {
     courseServices
       .postCourse(course)
       .then((result) => {
-       
         dispatch(createAction(POST_COURSE), result.data);
 
         let formData = new FormData();
@@ -40,5 +39,16 @@ export const postCourses = (course, file) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+};
+
+export const getDetailCourse = (id) => {
+  return (dispatch) => {
+    courseServices
+      .fetchDetailCourse(id)
+      .then((result) => {
+        dispatch(createAction(GET_DETAIL_COURSE, result.data));
+      })
+      .catch((err) => console.log(err));
   };
 };

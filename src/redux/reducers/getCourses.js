@@ -1,8 +1,9 @@
-import { GET_COURSES, POST_COURSE } from "../constants/type";
+import { GET_COURSES, GET_DETAIL_COURSE, POST_COURSE } from "../constants/type";
 
 const stateDefault = {
   result: {},
   postCourse: {},
+  detailCourse: {},
 };
 
 const getCourses = (state = stateDefault, action) => {
@@ -14,6 +15,12 @@ const getCourses = (state = stateDefault, action) => {
 
     case POST_COURSE:
       state.postCourse = action.payload;
+
+      return { ...state };
+
+    case GET_DETAIL_COURSE:
+      state.detailCourse = action.payload;
+   
       return { ...state };
     default:
       return { ...state };

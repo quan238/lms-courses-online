@@ -14,6 +14,13 @@ export default class CourseService {
       mimeType: "json",
     });
   }
+  async fetchDetailCourse(id) {
+    return await Axios({
+      url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`,
+      method: "GET",
+      mimeType: "json",
+    });
+  }
   async postCourse(course) {
     return await Axios({
       headers: {

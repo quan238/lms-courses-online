@@ -7,6 +7,7 @@ import "./Courses.scss";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../redux/actions/type";
+import { NavLink } from "react-router-dom";
 
 export default function Courses(props) {
   // slick slider == button
@@ -56,7 +57,10 @@ export default function Courses(props) {
           >
             <div className="item">
               <div className="fcrse_1 mb-20">
-                <a href="course_detail_view.html" className="fcrse_img">
+                <NavLink
+                  to={`/detailcourse${course.maKhoaHoc}`}
+                  className="fcrse_img"
+                >
                   <img src={course.hinhAnh} alt />
                   <div className="course-overlay">
                     {props.reverse === 0 ? (
@@ -73,7 +77,7 @@ export default function Courses(props) {
                     </span>
                     <div className="crse_timer">28 hours</div>
                   </div>
-                </a>
+                </NavLink>
                 <div className="fcrse_content">
                   <div className="eps_dots more_dropdown">
                     <a href="#">
@@ -102,9 +106,12 @@ export default function Courses(props) {
                     <span className="vdt14">{course.luotXem} views</span>
                     <span className="vdt14">15 days ago</span>
                   </div>
-                  <a href="course_detail_view.html" className="crse14s">
+                  <NavLink
+                    to={`/detailcourse${course.maKhoaHoc}`}
+                    className="crse14s"
+                  >
                     {course.tenKhoaHoc}
-                  </a>
+                  </NavLink>
                   <a href="#" className="crse-cate">
                     {course.danhMucKhoaHoc.maDanhMucKhoahoc} |{" "}
                     {course.danhMucKhoaHoc.tenDanhMucKhoaHoc}

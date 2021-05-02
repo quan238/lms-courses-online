@@ -6,10 +6,13 @@ import LiveStreams from "./pages/LiveStreams/LiveStreams";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import SaveCourses from "./pages/SaveCourses/SaveCourses";
+import Profile from "./pages/Profile/Profile";
+import Live_output from "./pages/LiveStreams/Live_Output/Live_output";
 
 // instructor
 import CreateNewCourses from "./pages/Instructor/CreateNewCourses/CreateNewCourses";
-import Live_output from "./pages/LiveStreams/Live_Output/Live_output";
+import DetailCouse from "./pages/DetailCourse/DetailCouse";
+
 const routesHome = [
   {
     path: "/",
@@ -47,6 +50,7 @@ const routesHome = [
     exact: true,
     component: Live_output,
   },
+
   //   { path: "/login", exact: true, component: Login },
 ];
 
@@ -58,4 +62,16 @@ const routesInstructor = [
   },
 ];
 
-export { routesHome, routesInstructor };
+const routeDetail = [
+  {
+    path: "/profile",
+    extact: true,
+    component: Profile,
+  },
+  {
+    path: "/detailcourse:id",
+    extact: true,
+    component: DetailCouse,
+  },
+];
+export { routesHome, routesInstructor, routeDetail };

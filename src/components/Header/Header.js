@@ -24,7 +24,7 @@ export default function Header() {
 
   const taiKhoan = useSelector((state) => state.loginUserReducer.taiKhoan);
 
-  console.log(taiKhoan);
+  // console.log(taiKhoan);
 
   return (
     <header className="header clearfix">
@@ -305,19 +305,21 @@ export default function Header() {
                       </div>
                     </div>
                     {taiKhoan.maLoaiNguoiDung === "HV" ? (
-                      <a
+                      <NavLink
+                        to="/profile"
                         href="my_instructor_profile_view.html"
                         className="dp_link_12"
                       >
                         View Student Profile
-                      </a>
+                      </NavLink>
                     ) : (
-                      <a
+                      <NavLink
+                        to="/profile"
                         href="my_instructor_profile_view.html"
                         className="dp_link_12"
                       >
                         View Instuctor Profile
-                      </a>
+                      </NavLink>
                     )}
                   </div>
                   <div className="night_mode_switch__btn">

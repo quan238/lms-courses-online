@@ -7,15 +7,17 @@ import { BrowserRouter, Route, Router, Switch } from "react-router-dom";
 
 //import history
 import { createBrowserHistory } from "history";
-import { routesHome, routesInstructor } from "../../routes";
+import { routeDetail, routesHome, routesInstructor } from "../../routes";
 
 //template
 import HomeTemplate from "../../template/HomeTemplate";
 import InstructorTemplate from "../../template/InstructorTemplate/InstructorTemplate";
+import DetailTemplate from "../../template/DetailTemplate/DetailTemplate";
 
 import Login from "../../pages/Login/Login";
 
 import ScrollToTop from "./ScrollToTop";
+import Profile from "../../pages/Profile/Profile";
 
 export const history = createBrowserHistory();
 //Đối tượng giúp chuyển hướng trang bất kì file nào
@@ -50,6 +52,21 @@ const showItemInsutrctor = (routes) => {
   }
 };
 
+const showItemDetail = (routes) => {
+  if (routes && routes.length > 0) {
+    return routes.map((item, index) => {
+      return (
+        <DetailTemplate
+          key={index}
+          exact={item.exact}
+          path={item.path}
+          Component={item.component}
+        ></DetailTemplate>
+      );
+    });
+  }
+};
+
 function App(props) {
   // get data from local to state
 
@@ -60,6 +77,7 @@ function App(props) {
           <Switch>
             {showItemHome(routesHome)}
             {showItemInsutrctor(routesInstructor)}
+            {showItemDetail(routeDetail)}
           </Switch>
         </ScrollToTop>
       </div>
