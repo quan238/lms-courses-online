@@ -1,18 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./General.scss";
 
-export default function General() {
+// formik
+import { useFormik } from "formik";
+import * as yup from "yup";
+
+import { NavLink } from "react-router-dom";
+import { taiKhoan } from "../../../../config/js/settingConfig";
+import Axios from "axios";
+
+export default function General(props) {
+  // date
+  var d = new Date();
+  var date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+
+  var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+  var dateTime = date;
+
+  // hidden visibile for drop down
+
+  let visible = [" visible", "active"];
+
+  let hidden = ["hidden", "noactive"];
+
+  const [drop, setDrop] = useState(hidden);
+  const [drop2, setDrop2] = useState(hidden);
+
+  const user = JSON.parse(localStorage.getItem(taiKhoan));
+
+  const {
+    setFieldValue,
+    values,
+    handleChange,
+    handleSubmit,
+    errors,
+    handleBlur,
+    touched,
+    isValid,
+  } = useFormik({
+    initialValues: {
+      maKhoaHoc: "",
+      biDanh: "",
+      tenKhoaHoc: "",
+      moTa: "",
+      luotXem: 0,
+      danhGia: 0,
+      hinhAnh: " ",
+      maNhom: "GP01",
+      ngayTao: dateTime,
+      maDanhMucKhoaHoc: "",
+      taiKhoanNguoiTao: user.taiKhoan,
+    },
+
+    validationSchema: yup.object().shape({}),
+
+    onSubmit: (values) => {
+      let file = values.hinhAnh;
+
+      let clonevalues = { ...values };
+
+      clonevalues.hinhAnh = clonevalues.hinhAnh.name;
+      var str = clonevalues.tenKhoaHoc;
+      str = str.replace(/\s+/g, "-").toLowerCase();
+
+      clonevalues.maKhoaHoc = `${str}-${clonevalues.maKhoaHoc}`;
+      props.getCourse(clonevalues, file);
+    },
+  });
+
+  // active
   return (
     <div className="step-tab-panel step-tab-info active" id="tab_step1">
       <div className="tab-from-content">
-        <div className="title-icon">
-          <h3 className="title">
-            <i class="fa fa-info-circle"></i>
-            General Information
-          </h3>
-        </div>
-        <div className="course__form">
+        <form className="course__form" id="form1" onSubmit={handleSubmit}>
           <div className="general_info10">
             <div className="row">
               <div className="col-lg-6 col-md-6">
@@ -23,10 +84,12 @@ export default function General() {
                       className="prompt srch_explore"
                       type="text"
                       placeholder="Insert your course title."
-                      name="title"
+                      name="tenKhoaHoc"
                       data-purpose="edit-course-title"
                       maxLength={60}
                       id="main[title]"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
                     <div className="badge_num">60</div>
                   </div>
@@ -40,10 +103,12 @@ export default function General() {
                       className="prompt srch_explore"
                       type="text"
                       placeholder="Insert your course Subtitle."
-                      name="subtitle"
+                      name="biDanh"
                       data-purpose="edit-course-title"
                       maxLength={60}
                       id="sub[title]"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
                     <div className="badge_num2">120</div>
                   </div>
@@ -66,13 +131,13 @@ export default function General() {
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-list"></i>
+                          <i className="fa fa-list"></i>
                         </a>
                       </li>
 
                       <li>
                         <a href="#">
-                          <i class="fa fa-list-ul"></i>
+                          <i className="fa fa-list-ul"></i>
                         </a>
                       </li>
                       <li>
@@ -82,12 +147,12 @@ export default function General() {
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-text-width"></i>
+                          <i className="fa fa-text-width"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-text-height"></i>
+                          <i className="fa fa-text-height"></i>
                         </a>
                       </li>
                     </ul>
@@ -96,94 +161,14 @@ export default function General() {
                         <div className="field">
                           <textarea
                             rows={5}
-                            name="description"
+                            name="moTa"
                             id="id_course_description"
                             placeholder="Insert your course description"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                           />
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-12">
-                <div className="mt-30 lbel25">
-                  <label>Language*</label>
-                </div>
-                <div
-                  className="ui hj145 dropdown cntry152 prompt srch_explore selection  visible"
-                  //active
-                  tabIndex={0}
-                >
-                  <select>
-                    <option value>Select Language</option>
-                    <option value={1}>English</option>
-                    <option value={2}>Español</option>
-                    <option value={3}>Português</option>
-                    <option value={4}>日本語</option>
-                    <option value={5}>Deutsch</option>
-                    <option value={6}>Français</option>
-                    <option value={7}>Türkçe</option>
-                    <option value={8}>हिन्दी</option>
-                    <option value={9}>Italiano</option>
-                    <option value={10}>Polski</option>
-                    <option value={11}>ภาษาไทย</option>
-                    <option value={12}>Română</option>
-                    <option value={13}>Telugu</option>
-                    <option value={14}>मराठी</option>
-                    <option value={15}>ਪੰਜਾਬੀ</option>
-                  </select>
-                  <i className="dropdown icon" />
-                  <div className="default text">Select Language</div>
-                  <div
-                    className="menu transition hidden"
-                    tabIndex={-1}
-                    // style={{ display: "block !important" }}
-                  >
-                    <div className="item" data-value={1}>
-                      English
-                    </div>
-                    <div className="item" data-value={2}>
-                      Español
-                    </div>
-                    <div className="item" data-value={3}>
-                      Português
-                    </div>
-                    <div className="item" data-value={4}>
-                      日本語
-                    </div>
-                    <div className="item" data-value={5}>
-                      Deutsch
-                    </div>
-                    <div className="item" data-value={6}>
-                      Français
-                    </div>
-                    <div className="item" data-value={7}>
-                      Türkçe
-                    </div>
-                    <div className="item" data-value={8}>
-                      हिन्दी
-                    </div>
-                    <div className="item" data-value={9}>
-                      Italiano
-                    </div>
-                    <div className="item" data-value={10}>
-                      Polski
-                    </div>
-                    <div className="item" data-value={11}>
-                      ภาษาไทย
-                    </div>
-                    <div className="item" data-value={12}>
-                      Română
-                    </div>
-                    <div className="item" data-value={13}>
-                      Telugu
-                    </div>
-                    <div className="item" data-value={14}>
-                      मराठी
-                    </div>
-                    <div className="item" data-value={15}>
-                      ਪੰਜਾਬੀ
                     </div>
                   </div>
                 </div>
@@ -192,140 +177,110 @@ export default function General() {
                 <div className="mt-30 lbel25">
                   <label>Course Category*</label>
                 </div>
-                <div
-                  class="ui hj145 dropdown cntry152 prompt srch_explore selection"
-                  tabindex="0"
+                <select
+                  name="maDanhMucKhoaHoc"
+                  className={`form-select ui hj145 dropdown cntry152 prompt srch_explore selection ${drop[1]}`}
+                  aria-label="Default select example"
+                  onClick={() => {
+                    if (drop[0] === visible[0]) {
+                      setDrop(hidden);
+                    } else {
+                      setDrop(visible);
+                      setDrop2(hidden);
+                    }
+                  }}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 >
-                  <select>
-                    <option value="">Select Category</option>
-                    <option value="1">Development</option>
-                    <option value="2">Business</option>
-                    <option value="3">Finance &amp; Accounting</option>
-                    <option value="4">IT &amp; Software</option>
-                    <option value="5">Office Productivity</option>
-                    <option value="6">Personal Development</option>
-                    <option value="7">Design</option>
-                    <option value="8">Marketing</option>
-                    <option value="9">Lifestyle</option>
-                    <option value="10">Photography</option>
-                    <option value="11">Health &amp; Fitness</option>
-                    <option value="12">Music</option>
-                    <option value="13">Teaching &amp; Academics</option>
-                  </select>
-                  <i class="dropdown icon"></i>
-                  <div class="default text">Select Category</div>
-                  <div
-                    class="menu transition hidden "
-                    tabindex="-1"
-                    style={{ display: "block !important" }}
-                  >
-                    <div class="item" data-value="1">
-                      Development
-                    </div>
-                    <div class="item" data-value="2">
-                      Business
-                    </div>
-                    <div class="item" data-value="3">
-                      Finance &amp; Accounting
-                    </div>
-                    <div class="item" data-value="4">
-                      IT &amp; Software
-                    </div>
-                    <div class="item" data-value="5">
-                      Office Productivity
-                    </div>
-                    <div class="item" data-value="6">
-                      Personal Development
-                    </div>
-                    <div class="item" data-value="7">
-                      Design
-                    </div>
-                    <div class="item" data-value="8">
-                      Marketing
-                    </div>
-                    <div class="item" data-value="9">
-                      Lifestyle
-                    </div>
-                    <div class="item" data-value="10">
-                      Photography
-                    </div>
-                    <div class="item" data-value="11">
-                      Health &amp; Fitness
-                    </div>
-                    <div class="item" data-value="12">
-                      Music
-                    </div>
-                    <div class="item" data-value="13">
-                      Teaching &amp; Academics
-                    </div>
-                  </div>
-                </div>{" "}
+                  <option value="">Select Category</option>
+                  <option value="BackEnd">BackEnd</option>
+                  <option value="Design">Design</option>
+                  <option value="DiDong">DiDong</option>
+                  <option value="FrontEnd">FrontEnd</option>
+                  <option value="FullStack">FullStack</option>
+                  <option value="TuDuy">TuDuy</option>
+                </select>
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="mt-30 lbel25">
                   <label>Course Subcategory*</label>
                 </div>
-                <div
-                  className="ui hj145 dropdown cntry152 prompt srch_explore selection"
-                  tabIndex={0}
+                <select
+                  name="maKhoaHoc"
+                  className={`form-select ui hj145 dropdown cntry152 prompt srch_explore selection ${drop[1]}`}
+                  aria-label="Default select example"
+                  onClick={() => {
+                    if (drop2[0] === visible[0]) {
+                      setDrop2(hidden);
+                    } else {
+                      setDrop2(visible);
+                      setDrop(hidden);
+                    }
+                  }}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 >
-                  <select>
-                    <option value>Select Subcategory</option>
-                    <option value={1}>Javascript</option>
-                    <option value={2}>Angular</option>
-                    <option value={3}>React</option>
-                    <option value={4}>CSS</option>
-                    <option value={5}>PHP</option>
-                    <option value={6}>Node.Js</option>
-                    <option value={7}>WordPress</option>
-                    <option value={8}>Vue JS</option>
-                    <option value={9}>Shopify</option>
-                    <option value={10}>Magento</option>
-                    <option value={11}>Open Cart </option>
-                  </select>
-                  <i className="dropdown icon" />
-                  <div className="default text">Select Subcategory</div>
-                  <div className="menu  transition hidden" tabIndex={-1}>
-                    <div className="item" data-value={1}>
-                      Javascript
-                    </div>
-                    <div className="item" data-value={2}>
-                      Angular
-                    </div>
-                    <div className="item" data-value={3}>
-                      React
-                    </div>
-                    <div className="item" data-value={4}>
-                      CSS
-                    </div>
-                    <div className="item" data-value={5}>
-                      PHP
-                    </div>
-                    <div className="item" data-value={6}>
-                      Node.Js
-                    </div>
-                    <div className="item" data-value={7}>
-                      WordPress
-                    </div>
-                    <div className="item" data-value={8}>
-                      Vue JS
-                    </div>
-                    <div className="item" data-value={9}>
-                      Shopify
-                    </div>
-                    <div className="item" data-value={10}>
-                      Magento
-                    </div>
-                    <div className="item" data-value={11}>
-                      Open Cart{" "}
-                    </div>
-                  </div>
-                </div>
-                ;
+                  <option value>Select Subcategory</option>
+                  <option value="javascript">Javascript</option>
+                  <option value="angular">Angular</option>
+                  <option value="react">React</option>
+                  <option value="css">CSS</option>
+                  <option value="php">PHP</option>
+                  <option value="nodejs">Node.Js</option>
+                  <option value="wordPress">WordPress</option>
+                  <option value="Vuejs">Vue js</option>
+                  <option value="Shopify">Shopify</option>
+                  <option value="Magento">Magento</option>
+                  <option value="OpenCart">React</option>
+                </select>
               </div>
             </div>
           </div>
-        </div>
+          <div className="view_info10">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="view_all_dt">
+                  <div className="view_img_left">
+                    <div className="view__img">
+                      <img src="images/courses/add_img.jpg" alt />
+                    </div>
+                  </div>
+                  <div className="view_img_right">
+                    <h4>Cover Image</h4>
+                    <p>
+                      Upload your course image here. It must meet our course
+                      image quality standards to be accepted. Important
+                      guidelines: 750x422 pixels; .jpg, .jpeg,. gif, or .png. no
+                      text on the image.
+                    </p>
+                    <div className="upload__input">
+                      <div className="input-group">
+                        <div className="custom-file">
+                          <input
+                            name="file"
+                            onChange={(e) =>
+                              setFieldValue("hinhAnh", e.target.files[0])
+                            }
+                            onBlur={handleBlur}
+                            type="file"
+                            className="custom-file-input"
+                            id="inputGroupFile04"
+                          />
+                          <label
+                            className="custom-file-label"
+                            htmlFor="inputGroupFile04"
+                          >
+                            No Choose file
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

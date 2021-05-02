@@ -108,6 +108,7 @@ export default function Header() {
       <div className="header_right">
         <ul>
           <li>
+            {/* || taiKhoan == " " */}
             {taiKhoan.maLoaiNguoiDung === "HV" ? (
               <a
                 className="upload_btn bg-dark text-white "

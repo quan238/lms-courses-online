@@ -1,8 +1,29 @@
 import React from "react";
+// formik
+import { useFormik } from "formik";
+import * as yup from "yup";
 
-export default function View() {
+export default function View(props) {
+  // formik
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    errors,
+    handleBlur,
+    touched,
+    isValid,
+  } = useFormik({
+    initialValues: {
+      file: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      props.getFile(values);
+    },
+  });
   return (
-    <div className="step-tab-panel step-tab-gallery" id="tab_step2">
+    <div className="mt-5 step-tab-panel step-tab-gallery" id="tab_step2">
       <div className="tab-from-content">
         <div className="title-icon">
           <h3 className="title">
@@ -10,7 +31,7 @@ export default function View() {
             View
           </h3>
         </div>
-        <div className="course__form">
+        <form onSubmit={handleSubmit} className="course__form" id="form2">
           <div className="view_info10">
             <div className="row">
               <div className="col-lg-12">
@@ -32,6 +53,9 @@ export default function View() {
                       <div className="input-group">
                         <div className="custom-file">
                           <input
+                            name="file"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                             type="file"
                             className="custom-file-input"
                             id="inputGroupFile04"
@@ -47,43 +71,10 @@ export default function View() {
                     </div>
                   </div>
                 </div>
-                <div className="view_all_dt">
-                  <div className="view_img_left">
-                    <div className="view__img">
-                      <img src="images/courses/add_video.jpg" alt />
-                    </div>
-                  </div>
-                  <div className="view_img_right">
-                    <h4>Promotional Video</h4>
-                    <p>
-                      Students who watch a well-made promo video are 5X more
-                      likely to enroll in your course. We've seen that statistic
-                      go up to 10X for exceptionally awesome videos. Learn how
-                      to make yours awesome!
-                    </p>
-                    <div className="upload__input">
-                      <div className="input-group">
-                        <div className="custom-file">
-                          <input
-                            type="file"
-                            className="custom-file-input"
-                            id="inputGroupFile05"
-                          />
-                          <label
-                            className="custom-file-label"
-                            htmlFor="inputGroupFile05"
-                          >
-                            No Choose file
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

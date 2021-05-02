@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import General from "./General/General";
 import View from "./View/View";
 import Content from "./Content/Content";
 import Information from "./Information/Information";
-
+// redux
+import { useDispatch } from "react-redux";
 import "./CreateNewCourses.scss";
+import { postCourses } from "../../../redux/actions/type";
 
 export default function CreateNewCourses() {
+  // set state course
+  const [course, setCourse] = useState(null);
+
+  const dispatch = useDispatch();
+
+  //file upload
+  const [file, setFile] = useState(null);
+
+  if (course != null) {
+    // let hinhAnh = {
+    //   hinhAnh: `https://elearning0706.cybersoft.edu.vn/hinhanh/${course.hinhAnh.name}`,
+    // };
+
+    // let values = { ...course, ...hinhAnh };
+
+    // console.log(course);
+    dispatch(postCourses(course, file));
+    console.log(file);
+    console.log(course);
+  }
   return (
     <div className="container">
       <div className="row">
@@ -18,101 +40,15 @@ export default function CreateNewCourses() {
       </div>
       <div className="row">
         <div className="col-12">
-          <div className="course_tabs_1">
+          <div className="course_tabs_1" style={{ marginTop: "30px" }}>
             <div id="add-course-tab" className="step-app">
-              <ul class="nav nav-tabs step-steps" id="myTab" role="tablist">
-                <li class="nav-item active ">
-                  <a
-                    class="nav-link active "
-                    id="home-tab"
-                    data-toggle="tab"
-                    href="#general"
-                    role="tab"
-                    aria-controls="home"
-                    aria-selected="true"
-                  >
-                    <span className="number" />
-                    <span className="step-name">General Information</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    id="profile-tab"
-                    data-toggle="tab"
-                    href="#view"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                  >
-                    <span className="number" />
-                    <span className="step-name">View</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    id="contact-tab"
-                    data-toggle="tab"
-                    href="#content"
-                    role="tab"
-                    aria-controls="contact"
-                    aria-selected="false"
-                  >
-                    <span className="number" />
-                    <span className="step-name">COURSE CONTENT</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    id="contact-tab"
-                    data-toggle="tab"
-                    href="#information"
-                    role="tab"
-                    aria-controls="contact"
-                    aria-selected="false"
-                  >
-                    <span className="number" />
-                    <span className="step-name">EXTRA Information</span>
-                  </a>
-                </li>
-              </ul>
-
-              <div className="step-content tab-content" id="myTabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="general"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
-                >
-                  <General></General>
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="view"
-                  role="tabpanel"
-                  aria-labelledby="profile-tab"
-                >
-                  <View></View>
-                </div>
-                {/* <div
-                  class="tab-pane fade"
-                  id="content"
-                  role="tabpanel"
-                  aria-labelledby="contact-tab"
-                >
-                  <Content></Content>
-                </div>*/}
-                <div
-                  class="tab-pane fade"
-                  id="information"
-                  role="tabpanel"
-                  aria-labelledby="contact-tab"
-                >
-                  <Information></Information>
-                </div>
-              </div>
+              <General
+                getCourse={(course, file) => {
+                  setCourse(course);
+                  setFile(file);
+                }}
+              ></General>
+              {/* <View getFile={(file) => setFile(file)}></View> */}
               <div
                 className="step-footer step-tab-pager"
                 style={{ justifyContent: "flex-end" }}
@@ -120,6 +56,8 @@ export default function CreateNewCourses() {
                 <button
                   data-direction="finish"
                   className="btn btn-default steps_btn"
+                  type="submit"
+                  form="form1"
                 >
                   Submit for Review
                 </button>
