@@ -12,9 +12,9 @@ export default function Info_rs() {
     <div className="fcrse_2 mb-30 info_rs">
       <div className="tutor_img">
         {taiKhoan !== " " ? (
-          <a href="my_instructor_profile_view.html">
+          <NavLink to="/profile">
             <img src="images/left-imgs/img-10.jpg" alt />
-          </a>
+          </NavLink>
         ) : (
           <NavLink to="/login">
             <img src="images/123.png" alt />
@@ -25,18 +25,15 @@ export default function Info_rs() {
         <div className="tutor150">
           {taiKhoan !== " " ? (
             <Fragment>
-              <a href="my_instructor_profile_view.html" className="tutor_name">
+              <NavLink to="/profile" className="tutor_name">
                 {taiKhoan.hoTen}
-              </a>
+              </NavLink>
               <div className="mef78" title="Verify">
                 <i className="uil uil-check-circle" />
               </div>
             </Fragment>
           ) : (
-            <NavLink
-              to="/login"
-              className="tutor_name tutor_name_active"
-            >
+            <NavLink to="/login" className="tutor_name tutor_name_active">
               Login
             </NavLink>
           )}
@@ -78,9 +75,9 @@ export default function Info_rs() {
               <span className="vdt15">615K Students</span>
               <span className="vdt15">12 Courses</span>
             </div>
-            <a href="my_instructor_profile_view.html" className="prfle12link">
+            <NavLink to="/profile" className="prfle12link">
               Go To Profile
-            </a>
+            </NavLink>
           </Fragment>
         ) : (
           <a></a>

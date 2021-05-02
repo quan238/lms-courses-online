@@ -18,6 +18,7 @@ import Login from "../../pages/Login/Login";
 
 import ScrollToTop from "./ScrollToTop";
 import Profile from "../../pages/Profile/Profile";
+import Loading from "../Loading/Loading";
 
 export const history = createBrowserHistory();
 //Đối tượng giúp chuyển hướng trang bất kì file nào

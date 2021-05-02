@@ -8,6 +8,7 @@ import "./Courses.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../redux/actions/type";
 import { NavLink } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function Courses(props) {
   // slick slider == button
@@ -150,6 +151,7 @@ export default function Courses(props) {
               width: "1619px",
             }}
           >
+            <Loading></Loading>
             <Slider {...sliderSettings} ref={customeSlider}>
               {renderCourse()}
             </Slider>

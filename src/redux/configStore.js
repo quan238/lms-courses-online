@@ -3,6 +3,7 @@ import reduxThunk from "redux-thunk";
 import getCourses from "./reducers/getCourses";
 import loginUser from "./reducers/auth/loginUser";
 import getUser from "./reducers/auth/getUser";
+import { loadingReducer } from "./reducers/loading/loadingReducer";
 
 // import reducers
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   getCoursesReducer: getCourses,
   loginUserReducer: loginUser,
   getUserReducer: getUser,
+  LoadingReducer: loadingReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

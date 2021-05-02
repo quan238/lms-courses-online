@@ -4,10 +4,21 @@ import { courseServices } from "../../services/Courses";
 import { GET_COURSES, GET_DETAIL_COURSE, POST_COURSE } from "../constants/type";
 
 export const getCourses = () => {
-  return (dispatch) => {
-    courseServices.fetchAll().then((result) => {
-      dispatch(createAction(GET_COURSES, result));
+  return async (dispatch) => {
+    //Gọi action loading open
+    dispatch({
+      type: "openLoading",
     });
+
+    setTimeout(async () => {
+      await courseServices.fetchAll().then((result) => {
+        dispatch(createAction(GET_COURSES, result));
+      });
+      // Tắt loadings
+      dispatch({
+        type: "closeLoading",
+      });
+    }, 900);
   };
 };
 
