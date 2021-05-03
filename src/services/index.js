@@ -32,4 +32,13 @@ export default class CourseService {
       data: course,
     });
   }
+  async deleteCourse(id) {
+    return await Axios({
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      url: `https://elearning0706.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${id}`,
+      method: "DELETE",
+    });
+  }
 }

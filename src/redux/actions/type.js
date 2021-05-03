@@ -1,7 +1,29 @@
 import Axios from "axios";
 import { createAction } from ".";
 import { courseServices } from "../../services/Courses";
-import { GET_COURSES, GET_DETAIL_COURSE, POST_COURSE } from "../constants/type";
+import {
+  DELETE_COURSE,
+  GET_COURSES,
+  GET_DETAIL_COURSE,
+  POST_COURSE,
+} from "../constants/type";
+// alert
+import Swal from "../../../node_modules/sweetalert2/dist/sweetalert2.js";
+import "../../../node_modules/sweetalert2/src/sweetalert2.scss";
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 2500,
+  width: 300,
+
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
 
 export const getCourses = () => {
   return async (dispatch) => {
@@ -60,5 +82,26 @@ export const getDetailCourse = (id) => {
         dispatch(createAction(GET_DETAIL_COURSE, result.data));
       })
       .catch((err) => console.log(err));
+  };
+};
+
+export const deleteCourse = (id) => {
+  return (dispatch) => {
+    courseServices
+      .deleteCourse(id)
+      .then((result) => {
+        //Đăng nhập thành công chuyển hướng về home
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Try again`,
+        });
+      });
   };
 };

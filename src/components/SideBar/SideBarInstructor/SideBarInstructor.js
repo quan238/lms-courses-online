@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function SideBarInstructor() {
   return (
@@ -8,14 +8,10 @@ export default function SideBarInstructor() {
         <div className="left_section">
           <ul>
             <li className="menu--item">
-              <a
-                href="instructor_dashboard.html"
-                className="menu--link"
-                title="Dashboard"
-              >
+              <Link to="/dashboard" className="menu--link" title="Dashboard">
                 <i className="uil uil-apps menu--icon" />
                 <span className="menu--label">Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li className="menu--item">
               <NavLink

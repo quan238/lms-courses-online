@@ -1,4 +1,9 @@
-import { GET_COURSES, GET_DETAIL_COURSE, POST_COURSE } from "../constants/type";
+import {
+  DELETE_COURSE,
+  GET_COURSES,
+  GET_DETAIL_COURSE,
+  POST_COURSE,
+} from "../constants/type";
 
 const stateDefault = {
   result: {},
@@ -20,8 +25,10 @@ const getCourses = (state = stateDefault, action) => {
 
     case GET_DETAIL_COURSE:
       state.detailCourse = action.payload;
-   
+
       return { ...state };
+    case DELETE_COURSE:
+
     default:
       return { ...state };
   }

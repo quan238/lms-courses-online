@@ -13,6 +13,7 @@ import Live_output from "./pages/LiveStreams/Live_Output/Live_output";
 import CreateNewCourses from "./pages/Instructor/CreateNewCourses/CreateNewCourses";
 import DetailCouse from "./pages/DetailCourse/DetailCouse";
 import InstructorCourse from "./pages/Instructor/Instructor_Course/InstructorCourse";
+import Dashboard from "./pages/Instructor/Dashboard/Dashboard";
 
 const routesHome = [
   {
@@ -66,6 +67,7 @@ const routesInstructor = [
     extact: true,
     component: InstructorCourse,
   },
+  { path: "/dashboard", extact: true, component: Dashboard },
 ];
 
 const routeDetail = [

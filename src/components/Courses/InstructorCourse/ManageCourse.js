@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCourses } from "../../../redux/actions/type";
+import { deleteCourse, getCourses } from "../../../redux/actions/type";
 import trash_alt from "./images/trash-alt.svg";
 import edit_alt from "./images/edit-alt.svg";
+// scss
+import "./MangeCourse.scss";
+// alert
+import Swal from "../../../../node_modules/sweetalert2/dist/sweetalert2.js";
+import "../../../../node_modules/sweetalert2/src/sweetalert2.scss";
 
 export default function ManageCourse() {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
   // ========================================================
 
   // fetch API courses from getCourses Reducer
@@ -12,8 +24,10 @@ export default function ManageCourse() {
   // get reducer
   const Courses = useSelector((state) => {
     // console.log(state.getCoursesReducer.result);
-    return state.getCoursesReducer.result;
+    return state.getCoursesReducer.result.data;
   });
+
+  const [khoaHoc, setkhoaHoc] = useState(1);
 
   const user = useSelector((state) => {
     return state.loginUserReducer.taiKhoan;
@@ -24,17 +38,13 @@ export default function ManageCourse() {
   // goi api
   useEffect(() => {
     dispatch(getCourses());
-  }, []);
-
-  console.log("course", Courses);
-
-  console.log("user", user);
+  }, [khoaHoc]);
 
   const renderListCourse = () => {
-    return Courses.data?.map((course, index) => {
+    return Courses?.map((course, index) => {
       if (course.nguoiTao.taiKhoan === user.taiKhoan) {
         return (
-          <tr>
+          <tr key={index}>
             <td className="text-center">{course.maKhoaHoc}</td>
             <td>{course.tenKhoaHoc}</td>
             <td className="text-center">{course.ngayTao}</td>
@@ -45,10 +55,47 @@ export default function ManageCourse() {
             </td>
 
             <td className="text-center">
-              <a href="#" title="Edit" className="gray-s">
+              <a title="Edit" className="gray-s">
                 <img src={edit_alt} className="uil uil-edit-alt" />
               </a>
-              <a href="#" title="Delete" className="gray-s">
+              <a
+                onClick={() => {
+                  swalWithBootstrapButtons
+                    .fire({
+                      title: "Are you sure?",
+                      text: "You won't be able to revert this!",
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonText: "Yes, delete it!",
+                      cancelButtonText: "No, cancel!",
+                      reverseButtons: true,
+                    })
+                    .then((result) => {
+                      if (result.isConfirmed) {
+                        swalWithBootstrapButtons.fire(
+                          "Deleted!",
+                          "Your course has been deleted.",
+                          "success"
+                        );
+
+                        dispatch(deleteCourse(course.maKhoaHoc));
+
+                        setkhoaHoc(course.maKhoaHoc);
+                      } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                      ) {
+                        swalWithBootstrapButtons.fire(
+                          "Cancelled",
+                          "Your course is safe :)",
+                          "error"
+                        );
+                      }
+                    });
+                }}
+                title="Delete"
+                className="gray-s"
+              >
                 <img src={trash_alt} className="uil uil-trash-alt" />
               </a>
             </td>
