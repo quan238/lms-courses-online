@@ -12,6 +12,7 @@ import Live_output from "./pages/LiveStreams/Live_Output/Live_output";
 // instructor
 import CreateNewCourses from "./pages/Instructor/CreateNewCourses/CreateNewCourses";
 import DetailCouse from "./pages/DetailCourse/DetailCouse";
+import InstructorCourse from "./pages/Instructor/Instructor_Course/InstructorCourse";
 
 const routesHome = [
   {
@@ -59,6 +60,11 @@ const routesInstructor = [
     path: "/create-new-courses",
     exact: true,
     component: CreateNewCourses,
+  },
+  {
+    path: "/instructorCourses",
+    extact: true,
+    component: InstructorCourse,
   },
 ];
 

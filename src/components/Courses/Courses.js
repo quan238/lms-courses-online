@@ -47,6 +47,13 @@ export default function Courses(props) {
     Courses.data?.reverse();
   }
 
+  // render loading
+  const renderLoading = () => {
+    if (!Courses.data) {
+      return <Loading></Loading>;
+    }
+    return <Fragment></Fragment>;
+  };
   // render phan tu trong mang?
   const renderCourse = () => {
     return Courses.data?.map((course, index) => {
@@ -151,7 +158,7 @@ export default function Courses(props) {
               width: "1619px",
             }}
           >
-            <Loading></Loading>
+            {renderLoading()}
             <Slider {...sliderSettings} ref={customeSlider}>
               {renderCourse()}
             </Slider>

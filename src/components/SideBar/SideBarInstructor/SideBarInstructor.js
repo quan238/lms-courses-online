@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 export default function SideBarInstructor() {
   return (
     <nav className="vertical_nav">
@@ -16,14 +18,14 @@ export default function SideBarInstructor() {
               </a>
             </li>
             <li className="menu--item">
-              <a
-                href="instructor_courses.html"
+              <NavLink
+                to="/instructorCourses"
                 className="menu--link"
                 title="Courses"
               >
                 <i className="uil uil-book-alt menu--icon" />
                 <span className="menu--label">Courses</span>
-              </a>
+              </NavLink>
             </li>
             <li className="menu--item">
               <a

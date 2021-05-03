@@ -36,7 +36,7 @@ export default function Header() {
         <span className="collapse_menu--label" />
       </button>
       <div className="main_logo" id="logo">
-        <NavLink to="/">
+        <NavLink to="/home">
           <img src={udemy} alt style={{ width: "115px" }} />
         </NavLink>
         <a href="index.html">

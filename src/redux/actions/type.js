@@ -9,7 +9,6 @@ export const getCourses = () => {
     dispatch({
       type: "openLoading",
     });
-
     setTimeout(async () => {
       await courseServices.fetchAll().then((result) => {
         dispatch(createAction(GET_COURSES, result));
