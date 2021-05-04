@@ -330,12 +330,9 @@ export default function Header() {
                       </span>
                     </a>
                   </div>
-                  <a
-                    href="instructor_dashboard.html"
-                    className="item channel_item"
-                  >
-                    Cursus dashboard
-                  </a>
+                  <NavLink to="./dashboard" className="item channel_item">
+                    Udemy dashboard
+                  </NavLink>
                   <a href="membership.html" className="item channel_item">
                     Paid Memberships
                   </a>

@@ -20,6 +20,8 @@ import ScrollToTop from "./ScrollToTop";
 import Profile from "../../pages/Profile/Profile";
 import Loading from "../Loading/Loading";
 
+import "./App.css"
+
 export const history = createBrowserHistory();
 //Đối tượng giúp chuyển hướng trang bất kì file nào
 

@@ -6,9 +6,7 @@ import "./General.scss";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import { NavLink } from "react-router-dom";
 import { taiKhoan } from "../../../../config/js/settingConfig";
-import Axios from "axios";
 
 export default function General(props) {
   // date

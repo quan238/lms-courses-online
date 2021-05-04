@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCourse, getCourses } from "../../../redux/actions/type";
 import trash_alt from "./images/trash-alt.svg";
@@ -8,6 +8,7 @@ import "./MangeCourse.scss";
 // alert
 import Swal from "../../../../node_modules/sweetalert2/dist/sweetalert2.js";
 import "../../../../node_modules/sweetalert2/src/sweetalert2.scss";
+import UpdateCourse from "../UpdateCourse/UpdateCourse";
 
 export default function ManageCourse() {
   const swalWithBootstrapButtons = Swal.mixin({
@@ -23,7 +24,7 @@ export default function ManageCourse() {
 
   // get reducer
   const Courses = useSelector((state) => {
-    // console.log(state.getCoursesReducer.result);
+    
     return state.getCoursesReducer.result.data;
   });
 
@@ -35,6 +36,8 @@ export default function ManageCourse() {
 
   const dispatch = useDispatch();
 
+  const [update, setUpdate] = useState(-1);
+
   // goi api
   useEffect(() => {
     dispatch(getCourses());
@@ -44,62 +47,81 @@ export default function ManageCourse() {
     return Courses?.map((course, index) => {
       if (course.nguoiTao.taiKhoan === user.taiKhoan) {
         return (
-          <tr key={index}>
-            <td className="text-center">{course.maKhoaHoc}</td>
-            <td>{course.tenKhoaHoc}</td>
-            <td className="text-center">{course.ngayTao}</td>
-            <td className="text-center">{course.soLuongHocVien}</td>
-            <td className="text-center">{course.luotXem}</td>
-            <td className="text-center">
-              <a href="#">{course.danhMucKhoaHoc?.maDanhMucKhoahoc}</a>
-            </td>
-
-            <td className="text-center">
-              <a title="Edit" className="gray-s">
-                <img src={edit_alt} className="uil uil-edit-alt" />
-              </a>
-              <a
-                onClick={() => {
-                  swalWithBootstrapButtons
-                    .fire({
-                      title: "Are you sure?",
-                      text: "You won't be able to revert this!",
-                      icon: "warning",
-                      showCancelButton: true,
-                      confirmButtonText: "Yes, delete it!",
-                      cancelButtonText: "No, cancel!",
-                      reverseButtons: true,
-                    })
-                    .then((result) => {
-                      if (result.isConfirmed) {
-                        swalWithBootstrapButtons.fire(
-                          "Deleted!",
-                          "Your course has been deleted.",
-                          "success"
-                        );
-
-                        dispatch(deleteCourse(course.maKhoaHoc));
-
-                        setkhoaHoc(course.maKhoaHoc);
-                      } else if (
-                        /* Read more about handling dismissals below */
-                        result.dismiss === Swal.DismissReason.cancel
-                      ) {
-                        swalWithBootstrapButtons.fire(
-                          "Cancelled",
-                          "Your course is safe :)",
-                          "error"
-                        );
-                      }
-                    });
+          <Fragment key={index}>
+            {update === index ? (
+              <UpdateCourse
+                updateCourse={course}
+                close={() => {
+                  setUpdate(-1);
                 }}
-                title="Delete"
-                className="gray-s"
-              >
-                <img src={trash_alt} className="uil uil-trash-alt" />
-              </a>
-            </td>
-          </tr>
+              />
+            ) : (
+              ""
+            )}
+            {/* <UpdateCourse /> */}
+            <tr>
+              <td className="text-center">{course.maKhoaHoc}</td>
+              <td>{course.tenKhoaHoc}</td>
+              <td className="text-center">{course.ngayTao}</td>
+              <td className="text-center">{course.soLuongHocVien}</td>
+              <td className="text-center">{course.luotXem}</td>
+              <td className="text-center">
+                <a href="#">{course.danhMucKhoaHoc?.maDanhMucKhoahoc}</a>
+              </td>
+
+              <td className="text-center">
+                <a
+                  onClick={() => {
+                    setUpdate(index);
+                  }}
+                  title="Edit"
+                  className="gray-s"
+                >
+                  <img src={edit_alt} className="uil uil-edit-alt" />
+                </a>
+                <a
+                  onClick={() => {
+                    swalWithBootstrapButtons
+                      .fire({
+                        title: "Are you sure?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel!",
+                        reverseButtons: true,
+                      })
+                      .then((result) => {
+                        if (result.isConfirmed) {
+                          swalWithBootstrapButtons.fire(
+                            "Deleted!",
+                            "Your course has been deleted.",
+                            "success"
+                          );
+
+                          dispatch(deleteCourse(course.maKhoaHoc));
+
+                          setkhoaHoc(course.maKhoaHoc);
+                        } else if (
+                          /* Read more about handling dismissals below */
+                          result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                          swalWithBootstrapButtons.fire(
+                            "Cancelled",
+                            "Your course is safe :)",
+                            "error"
+                          );
+                        }
+                      });
+                  }}
+                  title="Delete"
+                  className="gray-s"
+                >
+                  <img src={trash_alt} className="uil uil-trash-alt" />
+                </a>
+              </td>
+            </tr>
+          </Fragment>
         );
       }
     });
